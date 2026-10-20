@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>What a Stool Sample Can't Tell You | Dylan Lennon, PhD</title>
+<title>Food, Gut, Brain | Dylan Lennon, PhD</title>
 <meta name="description" content="A scroll-through story of Dylan Lennon's PhD research: mapping the newborn gut microbiome site by site, and resolving diet to the molecule. Built on the data from his University of Florida dissertation.">
-<meta property="og:title" content="What a Stool Sample Can't Tell You">
+<meta property="og:title" content="Food changes the brain. We don't know how.">
 <meta property="og:description" content="In ten days, the newborn gut sorts its microbes into neighborhoods, and stool stops reflecting them. A story told with the data from Dylan Lennon's PhD dissertation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,23 +130,61 @@ footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;c
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b>Dylan Lennon, PhD</b><a href="#act1">The gut</a><a href="#act3">The twist</a><a href="#act4">The food</a><a href="#act5">The clinic</a><a href="#explore" class="keep">Explore the data</a><a href="#about">About</a></div><div class="progress" id="prog"></div></nav>
+<nav><div class="wrap"><b>Dylan Lennon, PhD</b><a href="#prologue">The question</a><a href="#act-diet">The diet</a><a href="#act-gut">The gut</a><a href="#act-twist">The twist</a><a href="#explore" class="keep">Explore the data</a><a href="#about">About</a></div><div class="progress" id="prog"></div></nav>
 
 <div class="wrap">
 <header class="hero">
   <div class="eyebrow">A PhD story · Nutritional Sciences · University of Florida</div>
-  <h1>What a stool sample <em>can't</em> tell you.</h1>
-  <p class="lede">I spent my PhD trying to see the newborn gut and the food that feeds it in higher resolution. Here is what turned up, told with the data.</p>
+  <h1>Food changes the brain. <em>We don't know how.</em></h1>
+  <p class="lede">For children with epilepsy that medication can't control, a ketogenic diet can quiet seizures. My PhD asked what we were missing between the plate and the brain, by measuring diet and the gut microbiome in far higher resolution.</p>
   <div class="cue"><i></i>Scroll to begin</div>
 </header>
 
-<!-- ================= ACT I ================= -->
-<section class="act" id="act1"><div class="num">Part one</div><h2>Going upstream</h2></section>
+<!-- ================= PROLOGUE ================= -->
+<section class="act" id="prologue"><div class="num">Prologue</div><h2>Three links, two of them blurry</h2></section>
+<div class="scrolly" data-graphic="tri">
+  <div class="steps">
+    <div class="step"><div class="card">For more than 90 years, doctors have treated epilepsy with food. Remove most of the carbohydrate, replace it with fat, and <b>seizures change</b>.</div></div>
+    <div class="step"><div class="card">In children whose seizures medication can't control, the diet dramatically improves seizures in about a third, helps another third, and does little for the rest. <b>No one knows why.</b><small>Dissertation Ch. 1</small></div></div>
+    <div class="step"><div class="card">Food is the medicine here, so something in the food is doing the work. Yet the diet is prescribed and studied as <b>a single number</b>: the ratio of fat to protein plus carbohydrate.</div></div>
+    <div class="step"><div class="card">Between the plate and the brain sits the <b>gut microbiome</b>. Diet reshapes gut microbes, microbes change how diet affects metabolism, and they make signaling molecules such as GABA and serotonin. Their role in this therapy was <b>completely unexplored</b>.</div></div>
+    <div class="step"><div class="card">And when the gut microbiome is studied at all, it is read from <b>one place: stool</b>.</div></div>
+    <div class="step"><div class="card">So my dissertation set out to sharpen the two blurry links. <b>Diet, resolved to the molecule. The gut, mapped site by site.</b> The brain stays the open question, but now there is something precise to connect it to.</div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-tri" viewBox="0 0 940 520" role="img" aria-label="Food, gut microbiome and brain as three linked panels"></svg><div class="gcap" id="c-tri"></div></div></div>
+</div>
+
+<!-- ================= DIET ================= -->
+<section class="act" id="act-diet"><div class="num">Part one · The first link</div><h2>Diet is not just diet</h2></section>
+<div class="scrolly" data-graphic="food">
+  <div class="steps">
+    <div class="step"><div class="card">Start with the medicine itself: the food. Most nutrition science records a food as <b>a few numbers off a label</b>, and the ketogenic diet is prescribed from those same few numbers.</div></div>
+    <div class="step"><div class="card">Fat, protein, carbohydrate. The ketogenic ratio divides the first by the other two, <b>as if every gram of fat were the same</b>.</div></div>
+    <div class="step"><div class="card">But fat is dozens of fatty acids. Protein is twenty amino acids. Carbohydrate is sugars, starches and fiber. I built <b>foodomics</b> to see them: a database linking <b>2,731</b> brand-name foods to <b>8,789</b> USDA molecular profiles.<small>17,363 profiles from 8,557 label collections, 1997 to 2016. Ch. 3</small></div></div>
+    <div class="step"><div class="card">Then I found that food doesn't hold still. Of 964 foods we tracked over time, <b>46.5%</b> changed their label at least once. Carbohydrate changed most often.<small>1,411 changes in all. Tables 3-1 and 3-2</small></div></div>
+    <div class="step"><div class="card">In one modeled meal, swapping between equivalent brands at identical gram weights <b>doubled the carbohydrate</b>. For a child on ketogenic therapy, a carbohydrate spike can mean a breakthrough seizure.<small>Burrito meal model, brand set A vs. B. Figure 3-13</small></div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-food" viewBox="0 0 940 520" role="img" aria-label="One food resolved from a label to macronutrients to molecules"></svg><div class="gcap" id="c-food"></div></div></div>
+</div>
+
+<!-- ================= CLINIC ================= -->
+<section class="act" id="act-clinic"><div class="num">Part two</div><h2>Same prescription, different diet</h2></section>
+<div class="scrolly" data-graphic="clinic">
+  <div class="steps">
+    <div class="step"><div class="card">I brought foodomics into the clinic. UF's precision ketogenic therapy program, where I spent five years on the nutrition therapy staff, follows children whose seizures <b>medication couldn't control</b>.</div></div>
+    <div class="step"><div class="card"><span class="big" data-count="8999">8,999</span>days of brand-specific intake from <b>53 children</b>, some records spanning up to 20 years, each day resolved to the molecule.</div></div>
+    <div class="step"><div class="card">The therapy is prescribed as one number, a ratio of fat to protein plus carbohydrate. But at every ratio, <b>the kind of fat</b> children actually ate varied on its own. Same prescription, different diet. And since children respond so differently to the same ratio, <b>those hidden pixels are where to look</b>.<small>Fat saturation profiles by ratio stratum and feeding route. Figures 4-2 to 4-7</small></div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-clinic" viewBox="0 0 940 520" role="img" aria-label="The ketogenic therapy cohort and its fat intake"></svg><div class="gcap" id="c-clinic"></div></div></div>
+</div>
+
+<!-- ================= GUT ================= -->
+<section class="act" id="act-gut"><div class="num">Part three · The middle link</div><h2>Going upstream</h2></section>
 <div class="scrolly" data-graphic="gut">
   <div class="steps">
-    <div class="step"><div class="card">When scientists want to know what lives in a baby's gut, they almost always look at the same thing: <b>a stool sample</b>. It's painless to collect, and it's what at-home microbiome tests are built on.</div></div>
+    <div class="step"><div class="card">Now the middle link. To see what diet does to gut microbes, scientists almost always look at the same thing: <b>a stool sample</b>. It's painless to collect, and it's what at-home microbiome tests are built on.</div></div>
     <div class="step"><div class="card">But stool comes from the very end of the gut. The small intestine, where most nutrients are absorbed and the immune system gets much of its education, only reaches us <b>secondhand</b>.</div></div>
-    <div class="step"><div class="card">So I went upstream. In a piglet neonatal intensive care unit, a translational model of the human newborn, I sampled <b>13 points</b> along the whole intestine: three in each third of the small intestine and four along the colon.</div></div>
+    <div class="step"><div class="card">So I went upstream, and started at birth, because our team believed ketogenic therapy may work better when started early in life. In a piglet neonatal intensive care unit, a translational model of the human newborn, I sampled <b>13 points</b> along the whole intestine: three in each third of the small intestine and four along the colon.</div></div>
     <div class="step"><div class="card">At every point I took two samples: what flows through the gut, the <b>lumen</b>, and the lining itself, the <b>mucosa</b>. Twenty-six sites per animal, each a different neighborhood.</div></div>
     <div class="step"><div class="card"><span class="big" data-count="288">288</span>samples from six pairs of littermates, one sampled at <b>1 to 2 days old</b> and one at <b>9 to 10 days old</b>, read with 8.8 million 16S rRNA sequences.<small>Dissertation Ch. 2, Tables 2-1 and 2-2</small></div></div>
   </div>
@@ -154,7 +192,7 @@ footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;c
 </div>
 
 <!-- ================= ACT II ================= -->
-<section class="act" id="act2"><div class="num">Part two</div><h2>A map forms in ten days</h2></section>
+<section class="act" id="act-map"><div class="num">Part four</div><h2>A map forms in ten days</h2></section>
 <div class="scrolly" data-graphic="loc">
   <div class="steps">
     <div class="step"><div class="card">The first surprise: in day-old piglets, it barely mattered where in the gut I looked. Location explained just <b>5.6%</b> of the differences between microbial communities.</div></div>
@@ -165,45 +203,22 @@ footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;c
 </div>
 
 <!-- ================= ACT III ================= -->
-<section class="act" id="act3"><div class="num">Part three</div><h2>The twist</h2></section>
+<section class="act" id="act-twist"><div class="num">Part five</div><h2>The twist</h2></section>
 <div class="scrolly" data-graphic="stool">
   <div class="steps">
     <div class="step"><div class="card">Which raises the question that matters to anyone reading a stool test: <b>does stool still reflect what's happening upstream?</b></div></div>
     <div class="step"><div class="card">In the youngest piglets, mostly yes. For microbes found in both places, stool abundances predicted the small intestine with an R² of <b>0.67</b>, and the colon with <b>0.70</b>.</div></div>
     <div class="step"><div class="card">By day 10, that link had collapsed. Stool explained <b>7%</b> of the variation in the small intestine's contents, and essentially <b>none</b> on its lining.<small>Linear regression of shared OTU abundances, site vs. stool. Figure 2-14</small></div></div>
-    <div class="step"><div class="card">The same ten days that build the gut's map are the days stool stops being a faithful copy of it. <b>Stool still reads the colon's contents. It reads the rest of the gut less and less.</b></div></div>
+    <div class="step"><div class="card">The same ten days that build the gut's map are the days stool stops being a faithful copy of it. <b>Stool still reads the colon's contents. It reads the rest of the gut less and less.</b> If the microbes that respond to a diet live upstream, stool alone may never show them.</div></div>
   </div>
   <div class="graphic"><div class="frame"><svg id="g-stool" viewBox="0 0 940 520" role="img" aria-label="How well stool predicts each gut region at two ages"></svg><div class="gcap" id="c-stool"></div></div></div>
 </div>
 
-<!-- ================= ACT IV ================= -->
-<section class="act" id="act4"><div class="num">Part four</div><h2>The other side of the gut</h2></section>
-<div class="scrolly" data-graphic="food">
-  <div class="steps">
-    <div class="step"><div class="card">Everything a gut microbe eats, it gets from us. And diet has the same resolution problem. Most nutrition science records a food as <b>a few numbers off a label</b>.</div></div>
-    <div class="step"><div class="card">Fat, protein, carbohydrate. That's where most diet records stop.</div></div>
-    <div class="step"><div class="card">But fat is dozens of fatty acids. Protein is twenty amino acids. Carbohydrate is sugars, starches and fiber. I built <b>foodomics</b> to see them: a database linking <b>2,731</b> brand-name foods to <b>8,789</b> USDA molecular profiles.<small>17,363 profiles from 8,557 label collections, 1997 to 2016. Ch. 3</small></div></div>
-    <div class="step"><div class="card">Then I found that food doesn't hold still. Of 964 foods we tracked over time, <b>46.5%</b> changed their label at least once. Carbohydrate changed most often.<small>1,411 changes in all. Tables 3-1 and 3-2</small></div></div>
-    <div class="step"><div class="card">In one modeled meal, swapping between equivalent brands at identical gram weights <b>doubled the carbohydrate</b>. For a child on ketogenic therapy, a carbohydrate spike can mean a breakthrough seizure.<small>Burrito meal model, brand set A vs. B. Figure 3-13</small></div></div>
-  </div>
-  <div class="graphic"><div class="frame"><svg id="g-food" viewBox="0 0 940 520" role="img" aria-label="One food resolved from a label to macronutrients to molecules"></svg><div class="gcap" id="c-food"></div></div></div>
-</div>
-
-<!-- ================= ACT V ================= -->
-<section class="act" id="act5"><div class="num">Part five</div><h2>Same prescription, different diet</h2></section>
-<div class="scrolly" data-graphic="clinic">
-  <div class="steps">
-    <div class="step"><div class="card">I brought foodomics into the clinic. UF's precision ketogenic therapy program, where I spent five years on the nutrition therapy staff, follows children whose seizures <b>medication couldn't control</b>.</div></div>
-    <div class="step"><div class="card"><span class="big" data-count="8999">8,999</span>days of brand-specific intake from <b>53 children</b>, some records spanning up to 20 years, each day resolved to the molecule.</div></div>
-    <div class="step"><div class="card">The therapy is prescribed as one number, a ratio of fat to protein plus carbohydrate. But at every ratio, <b>the kind of fat</b> children actually ate varied on its own. Same prescription, different diet.<small>Fat saturation profiles by ratio stratum and feeding route. Figures 4-2 to 4-7</small></div></div>
-  </div>
-  <div class="graphic"><div class="frame"><svg id="g-clinic" viewBox="0 0 940 520" role="img" aria-label="The ketogenic therapy cohort and its fat intake"></svg><div class="gcap" id="c-clinic"></div></div></div>
-</div>
-
 <section class="finale">
-  <div class="eyebrow">What it adds up to</div>
-  <h2>Higher resolution on <em>both sides</em> of the gut.</h2>
-  <p>What goes in, measured to the molecule. What lives inside, mapped site by site. And a reminder that the first days of life move fast: the window when the gut builds its map is the window when a simple sample starts to miss it.</p>
+  <div class="eyebrow">Back to the question</div>
+  <h2>Diet is not just diet. <em>Stool is not the whole gut.</em></h2>
+  <p>Food changes the brain in these children, and the path may run through the gut. My dissertation built the tools to see both links in high resolution: diet resolved to the molecule, and the gut mapped site by site from its first days of life.</p>
+  <p>That is the groundwork for the question that started it all: which food molecules, acting through which microbes, in which part of the gut, change the brain? Children respond differently to the same ratio. The answer may be in the pixels.</p>
   <div class="duo">
     <div><h3>What I'd bring</h3><p>Longitudinal study design, compositional microbiome statistics in R, clean relational data built to last, and the habit of asking what a measurement can and can't see before trusting it.</p></div>
     <div class="b"><h3>Where I want to work</h3><p>Early-life microbiome and nutrition data, followed over time and explained clearly to the families and clinicians who depend on it.</p></div>
@@ -243,7 +258,7 @@ footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;c
   </div>
 </section>
 </div>
-<footer><div class="wrap">Charts redraw values reported in the dissertation; the gut diagram, the food ladder and the fat-composition panel in part five are schematics. © 2017 Dylan Lennon. <a href="https://github.com/dylanjlennon/dissertation">Source and data on GitHub</a>.</div></footer>
+<footer><div class="wrap">Charts redraw values reported in the dissertation; the prologue diagram, the gut diagram, the food ladder and the fat-composition panel are schematics. © 2017 Dylan Lennon. <a href="https://github.com/dylanjlennon/dissertation">Source and data on GitHub</a>.</div></footer>
 <div class="tip" id="tip" role="tooltip"></div>
 
 <script src="data.js"></script>
@@ -466,6 +481,67 @@ G.clinic=(function(){
   function set(k){P.kg.style.opacity=k===0?1:0;P.kids.forEach(x=>x.style.opacity=k===0?1:0);
     P.days.style.opacity=k===1?1:0;P.fat.style.opacity=k===2?1:0;
     cap.textContent=["Patients by feeding route (Ch. 4 methods).","8,999 records (days) meeting inclusion criteria.","Illustration of the finding, not patient data. See Figures 4-2 to 4-7."][k];}
+  return {build,set};
+})();
+
+
+/* =============== Graphic: TRIFECTA =============== */
+G.tri=(function(){
+  const s=document.getElementById("g-tri"),cap=document.getElementById("c-tri");let P={};
+  const T=[{x:30,k:"food",t:"Food"},{x:355,k:"gut",t:"Gut microbiome"},{x:680,k:"brain",t:"Brain"}],Y=150,S=230;
+  function tile(o){const g=el("g",{class:"tw"},s);el("rect",{x:o.x,y:Y,width:S,height:S,rx:12,fill:css("--soft"),stroke:css("--line"),"stroke-width":1.5},g);
+    tx(g,o.x+S/2,Y-18,o.t,"t-lbl",{"text-anchor":"middle"});return g;}
+  function arrow(x1,y1,x2,y2,curve){const d=curve?`M ${x1} ${y1} C ${x1+60} ${y1-110}, ${x2-60} ${y2-110}, ${x2} ${y2}`:`M ${x1} ${y1} L ${x2} ${y2}`;
+    const g=el("g",{class:"tw"},s);el("path",{d,fill:"none",stroke:css("--ink"),"stroke-width":2,"marker-end":"url(#tri-arr)"},g);return g;}
+  function build(){s.innerHTML="";P={};
+    const defs=el("defs",{},s);const m=el("marker",{id:"tri-arr",viewBox:"0 0 10 10",refX:9,refY:5,markerWidth:7,markerHeight:7,orient:"auto"},defs);el("path",{d:"M0 0 L10 5 L0 10 z",fill:css("--ink")},m);
+    P.food=tile(T[0]);P.gut=tile(T[1]);P.brain=tile(T[2]);
+    const cx=o=>o.x+S/2, cy=Y+S/2;
+    // food contents
+    P.fWord=st(tx(P.food,cx(T[0]),cy+12,"a meal","t-huge tw",{"text-anchor":"middle","font-size":40,fill:css("--muted")}),{opacity:1});
+    P.fRatio=st(el("g",{class:"tw"},P.food),{opacity:0});
+    el("rect",{x:T[0].x+20,y:Y+20,width:S-40,height:S-40,rx:6,fill:css("--ink")},P.fRatio);
+    tx(P.fRatio,cx(T[0]),cy+18,"4:1","t-huge",{"text-anchor":"middle","font-size":66,fill:css("--panel")});
+    tx(P.fRatio,cx(T[0]),cy+52,"one number","t-sub",{"text-anchor":"middle",fill:css("--off")});
+    P.fPix=st(el("g",{class:"tw"},P.food),{opacity:0});
+    const fat=css("--eosin"),pro=css("--hema"),carb=css("--p-cyan");
+    for(let i=0;i<40;i++){const c=i%5,r=Math.floor(i/5);const col=i<12?mix(fat,(i%4)*.09-.05):i<32?mix(pro,(i%5)*.08-.06):mix(carb,(i%4)*.07-.18);
+      el("rect",{x:T[0].x+20+c*38,y:Y+20+r*23.75,width:36,height:21.75,rx:2,fill:col},P.fPix);}
+    // gut contents
+    P.gWord=st(el("g",{class:"tw"},P.gut),{opacity:0});
+    el("path",{d:`M ${T[1].x+40} ${Y+60} C ${T[1].x+90} ${Y+10}, ${T[1].x+120} ${Y+140}, ${T[1].x+160} ${Y+80} S ${T[1].x+200} ${Y+170}, ${T[1].x+185} ${Y+200}`,fill:"none",stroke:css("--tract-edge"),"stroke-width":22,"stroke-linecap":"round"},P.gWord);
+    el("path",{d:`M ${T[1].x+40} ${Y+60} C ${T[1].x+90} ${Y+10}, ${T[1].x+120} ${Y+140}, ${T[1].x+160} ${Y+80} S ${T[1].x+200} ${Y+170}, ${T[1].x+185} ${Y+200}`,fill:"none",stroke:css("--tract"),"stroke-width":17,"stroke-linecap":"round"},P.gWord);
+    P.gStool=st(el("g",{class:"tw"},P.gut),{opacity:0});
+    el("circle",{cx:T[1].x+185,cy:Y+204,r:14,fill:css("--eosin")},P.gStool);tx(P.gStool,T[1].x+150,Y+209,"stool","t-sub",{"text-anchor":"end"});
+    P.gPix=st(el("g",{class:"tw"},P.gut),{opacity:0});
+    for(let i=0;i<13;i++){const r=i<3?0:i<6?1:i<9?2:3;const c=i%4,row=Math.floor(i/4);
+      el("rect",{x:T[1].x+20+c*48,y:Y+28+row*48,width:44,height:44,rx:4,fill:css(REG[r])},P.gPix);tx(P.gPix,T[1].x+42+c*48,Y+56+row*48,String(i+1),"",{"text-anchor":"middle","font-size":14,"font-family":"IBM Plex Mono, monospace",fill:css("--panel")});}
+    tx(P.gPix,T[1].x+S/2,Y+S+30,"each in lumen and mucosa","t-sub",{"text-anchor":"middle"});
+    P.gNote=st(tx(P.gut,cx(T[1]),Y+S+30,"role: unexplored","t-sub tw",{"text-anchor":"middle"}),{opacity:0});
+    // brain contents
+    tx(P.brain,cx(T[2]),Y+58,"seizure response","t-sub",{"text-anchor":"middle"});
+    P.bThirds=st(el("g",{class:"tw"},P.brain),{opacity:0});
+    [["strong",css("--hema")],["partial",css("--jej")],["little",css("--off")]].forEach(([l,c],i)=>{el("rect",{x:T[2].x+20+i*64,y:Y+80,width:60,height:60,rx:4,fill:c},P.bThirds);
+      st(tx(P.bThirds,T[2].x+50+i*64,Y+158,l,"t-sub",{"text-anchor":"middle"}),{fontSize:"12px"});tx(P.bThirds,T[2].x+50+i*64,Y+116,"⅓","t-huge",{"text-anchor":"middle","font-size":24,fill:i<2?css("--panel"):css("--ink")});});
+    P.bQ=st(tx(P.brain,cx(T[2]),Y+205,"why?","t-huge tw",{"text-anchor":"middle","font-size":30,fill:css("--eosin")}),{opacity:0});
+    // arrows
+    P.direct=arrow(cx(T[0]),Y-40,cx(T[2]),Y-40,true);
+    P.dLab=st(tx(s,470,Y-150+40,"seizures change","t-val tw",{"text-anchor":"middle","font-weight":600}),{opacity:1});
+    P.a1=arrow(T[0].x+S+8,cy,T[1].x-8,cy,false);P.a2=arrow(T[1].x+S+8,cy,T[2].x-8,cy,false);
+    P.l1=st(tx(s,(T[0].x+S+T[1].x)/2,cy+30,"reshapes","t-sub tw",{"text-anchor":"middle"}),{opacity:0,fontSize:"12px"});
+    P.l2=st(tx(s,(T[1].x+S+T[2].x)/2,cy+30,"GABA,","t-sub tw",{"text-anchor":"middle"}),{opacity:0,fontSize:"12px"});
+    P.l3=st(tx(s,(T[1].x+S+T[2].x)/2,cy+46,"serotonin","t-sub tw",{"text-anchor":"middle"}),{opacity:0,fontSize:"12px"});
+    P.foot=st(tx(s,470,Y+S+90,"","t-val tw",{"text-anchor":"middle","font-weight":600}),{opacity:0});
+  }
+  function set(k){const o=(e,v)=>e.style.opacity=v;
+    o(P.fWord,k<2?1:0);o(P.fRatio,k>=2&&k<5?1:0);o(P.fPix,k>=5?1:0);
+    o(P.gut,k>=3?1:0);o(P.gWord,k>=3&&k<5?1:0);o(P.gStool,k===4?1:0);o(P.gPix,k>=5?1:0);o(P.gNote,k===3?1:0);
+    o(P.bThirds,k>=1?1:0);o(P.bQ,k>=1?1:0);
+    o(P.direct,k<3?1:0);o(P.dLab,k<3?1:0);P.dLab.textContent=k===0?"seizures change":"mechanism unknown";
+    [P.a1,P.a2,P.l1,P.l2,P.l3].forEach(e=>o(e,k>=3?1:0));
+    o(P.foot,k>=5?1:0);P.foot.textContent="40 molecules per food   ·   13 sites × 2 compartments";
+    cap.textContent=["Schematic.","Seizure response to ketogenic therapy in intractable epilepsy, as summarized in Ch. 1.","The ketogenic ratio: grams of fat ÷ grams of protein plus carbohydrate.","Diet can alter metabolism in a gut microbe-dependent manner (Ch. 1).","The usual view of the gut microbiome.","The two tools of the dissertation: foodomics and gut biogeography."][k];
+  }
   return {build,set};
 })();
 
