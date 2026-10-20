@@ -83,6 +83,8 @@ svg .t-huge{font-family:var(--display);font-weight:700}
 .finale h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,6vw,72px);line-height:1;margin:0;text-wrap:balance;max-width:14ch}
 .finale h2 em{font-weight:400;font-style:italic;color:var(--hema)}
 .finale p{font-family:var(--display);font-size:clamp(19px,2vw,23px);line-height:1.5;margin:0;max-width:40ch}
+.vindicate{display:grid;gap:10px;max-width:760px;border-left:3px solid var(--eosin);padding:6px 0 6px 20px}
+.vindicate p{font-family:var(--display);font-size:clamp(19px,2vw,22px);line-height:1.5;margin:0}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px}
 .duo div{border-top:3px solid var(--hema);padding-top:10px}
 .duo div.b{border-color:var(--eosin)}
@@ -147,7 +149,7 @@ footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;c
     <div class="step"><div class="card">For more than 90 years, doctors have treated epilepsy with food. Remove most of the carbohydrate, replace it with fat, and <b>seizures change</b>.</div></div>
     <div class="step"><div class="card">In children whose seizures medication can't control, the diet dramatically improves seizures in about a third, helps another third, and does little for the rest. <b>No one knows why.</b><small>Dissertation Ch. 1</small></div></div>
     <div class="step"><div class="card">Food is the medicine here, so something in the food is doing the work. Yet the diet is prescribed and studied as <b>a single number</b>: the ratio of fat to protein plus carbohydrate.</div></div>
-    <div class="step"><div class="card">Between the plate and the brain sits the <b>gut microbiome</b>. Diet reshapes gut microbes, microbes change how diet affects metabolism, and they make signaling molecules such as GABA and serotonin. Their role in this therapy was <b>completely unexplored</b>.</div></div>
+    <div class="step"><div class="card">Between the plate and the brain sits the <b>gut microbiome</b>. Diet reshapes gut microbes, microbes change how diet affects metabolism, and they make signaling molecules such as GABA and serotonin. When I began, their role in this therapy was <b>completely unexplored</b>.</div></div>
     <div class="step"><div class="card">And when the gut microbiome is studied at all, it is read from <b>one place: stool</b>.</div></div>
     <div class="step"><div class="card">So my dissertation set out to sharpen the two blurry links. <b>Diet, resolved to the molecule. The gut, mapped site by site.</b> The brain stays the open question, but now there is something precise to connect it to.</div></div>
   </div>
@@ -218,7 +220,12 @@ footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;c
   <div class="eyebrow">Back to the question</div>
   <h2>Diet is not just diet. <em>Stool is not the whole gut.</em></h2>
   <p>Food changes the brain in these children, and the path may run through the gut. My dissertation built the tools to see both links in high resolution: diet resolved to the molecule, and the gut mapped site by site from its first days of life.</p>
-  <p>That is the groundwork for the question that started it all: which food molecules, acting through which microbes, in which part of the gut, change the brain? Children respond differently to the same ratio. The answer may be in the pixels.</p>
+  <div class="vindicate">
+    <div class="eyebrow">The year after I finished</div>
+    <p>A team at UCLA showed in mice that the ketogenic diet's protection against seizures disappears without gut bacteria, and comes back when two bacteria the diet enriches, <i>Akkermansia</i> and <i>Parabacteroides</i>, are restored together. Those microbes shifted the brain's balance of GABA to glutamate. The middle link is real.</p>
+    <div class="cite">Olson CA, Vuong HE, Yano JM, Liang QY, Nusbaum DJ, Hsiao EY. The gut microbiota mediates the anti-seizure effects of the ketogenic diet. <i>Cell</i>. 2018;173(7):1728-1741. <a href="https://doi.org/10.1016/j.cell.2018.04.027">doi:10.1016/j.cell.2018.04.027</a></div>
+  </div>
+  <p>Work like this usually reads the gut from stool and defines the diet by its formula. The next step needs both in high resolution, which is what my tools were built for: which food molecules, acting through which microbes, in which part of the gut, change the brain? Children respond differently to the same ratio. The answer may be in the pixels.</p>
   <div class="duo">
     <div><h3>What I'd bring</h3><p>Longitudinal study design, compositional microbiome statistics in R, clean relational data built to last, and the habit of asking what a measurement can and can't see before trusting it.</p></div>
     <div class="b"><h3>Where I want to work</h3><p>Early-life microbiome and nutrition data, followed over time and explained clearly to the families and clinicians who depend on it.</p></div>
