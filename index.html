@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Increased Resolution: Diet and the Gut Microbiome | Dylan Lennon, PhD</title>
-<meta name="description" content="Interactive summary of Dylan Lennon's PhD dissertation (University of Florida, 2017): gut microbiome biogeography in neonatal piglets and foodomics of ketogenic therapy intake, with the real data.">
-<meta property="og:title" content="Increased Resolution of Food Intake and Gut Microbiome">
-<meta property="og:description" content="Explore the data from Dylan Lennon's PhD dissertation: 288 gut microbiome samples across 26 sites, and 8,999 patient-days of molecular-level diet data.">
+<title>What a Stool Sample Can't Tell You | Dylan Lennon, PhD</title>
+<meta name="description" content="A scroll-through story of Dylan Lennon's PhD research: mapping the newborn gut microbiome site by site, and resolving diet to the molecule. Built on the data from his University of Florida dissertation.">
+<meta property="og:title" content="What a Stool Sample Can't Tell You">
+<meta property="og:description" content="In ten days, the newborn gut sorts its microbes into neighborhoods, and stool stops reflecting them. A story told with the data from Dylan Lennon's PhD dissertation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: single reading column; each chapter is a band with a lead paragraph, then numbered figures with captions */
+/* Layout: a scrollytelling essay. Each act pins a graphic on one side while short story steps scroll past on the other; the graphic changes with each step. Data explorer follows as an appendix. */
 :root{
   --bg:#f6f4f8; --panel:#fdfcfe; --ink:#1f1830; --muted:#5f5873; --line:#ddd6e6; --soft:#ece7f2;
   --hema:#3d2c7a; --eosin:#c2406c; --tract:#ecd3dd; --tract-edge:#d9aec0; --off:#cfc8da;
@@ -29,398 +29,485 @@
   --p-firm:#9a8cf0; --p-prot:#ec7aa0; --p-bact:#f0ad80; --p-cyan:#7cc6b0; --p-tm7:#c3baf7; --p-actino:#d8c46c; --p-fuso:#a7b3bf; --p-syn:#d08fab; --p-ten:#c0cad3;
   color-scheme:dark}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.62;
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;
   padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 a{color:var(--eosin)}
-.wrap{max-width:1000px;margin:0 auto}
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:6px 20px;flex-wrap:wrap;align-items:center;padding-block:10px;font-size:13.5px}
-nav b{font-family:var(--display);font-size:16px;margin-right:auto}
+.wrap{max-width:1180px;margin:0 auto}
+.narrow{max-width:720px;margin:0 auto}
+nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px 18px;flex-wrap:wrap;align-items:center;padding-block:9px;font-size:13px}
+nav b{font-family:var(--display);font-size:16px;margin-right:auto;font-weight:600}
 nav a{color:var(--muted);text-decoration:none}
 nav a:hover{color:var(--ink)}
-header.hero{padding-block:64px 40px;display:grid;gap:18px}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--eosin);width:0}
+
+/* Hero */
+.hero{min-height:min(88vh,900px);display:grid;align-content:center;gap:22px;padding-block:72px 48px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--eosin)}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(36px,6.4vw,64px);line-height:1.03;margin:0;text-wrap:balance;max-width:16ch}
-h1 em{font-style:italic;font-weight:500;color:var(--hema)}
-.lede{font-size:19px;color:var(--muted);margin:0;max-width:62ch}
-.cite{font-family:var(--mono);font-size:12.5px;color:var(--muted);border-left:2px solid var(--eosin);padding-left:12px;max-width:80ch}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:10px}
-.stat{border-top:2px solid var(--hema);padding-top:8px;min-width:0}
-.stat.b{border-color:var(--eosin)}
-.stat strong{font-family:var(--display);font-size:clamp(24px,3.4vw,34px);display:block;line-height:1.1;font-variant-numeric:tabular-nums}
-.stat span{font-size:13px;color:var(--muted)}
-section{padding-block:56px;border-top:1px solid var(--line);display:grid;gap:22px}
-.chap{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--eosin)}
-h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:4px 0 0;text-wrap:balance;max-width:24ch}
-h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0;line-height:1.2;text-wrap:balance}
-p{margin:0;max-width:68ch}
-.muted{color:var(--muted)}
-figure{margin:0;display:grid;gap:12px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(44px,8.4vw,104px);line-height:.98;margin:0;letter-spacing:-.01em;text-wrap:balance;max-width:13ch}
+.hero h1 em{font-weight:400;font-style:italic;color:var(--hema)}
+.hero .lede{font-family:var(--display);font-size:clamp(20px,2.5vw,27px);line-height:1.35;color:var(--muted);max-width:34ch;margin:0}
+.cue{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.cue i{display:inline-block;width:1px;height:38px;background:linear-gradient(var(--eosin),transparent);animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(.3);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(.3);transform-origin:bottom}}
+
+/* Act headers */
+.act{padding-block:96px 24px;display:grid;gap:12px;border-top:1px solid var(--line)}
+.act .num{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--eosin)}
+.act h2{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.4vw,62px);line-height:1.02;margin:0;text-wrap:balance;max-width:16ch}
+
+/* Scrollytelling */
+.scrolly{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;position:relative}
+.graphic svg .t-sub{font-size:15px}.graphic svg .t-lbl{font-size:17px}.graphic svg .t-val{font-size:16px}
+.steps{padding-block:12vh 40vh}
+.step{min-height:78vh;display:flex;align-items:center}
+.step .card{font-family:var(--display);font-size:clamp(20px,1.9vw,24px);line-height:1.45;max-width:30ch;opacity:.28;transition:opacity .45s ease}
+.step.on .card{opacity:1}
+.step .card b{font-weight:700;color:var(--hema)}
+.step .card .big{display:block;font-size:clamp(44px,5vw,64px);line-height:1;font-weight:700;color:var(--eosin);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.step .card small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.graphic{position:sticky;top:calc(56px + 6vh);height:calc(88vh - 56px);display:flex;align-items:center}
+.graphic .frame{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+.graphic svg{display:block;width:100%;height:auto;max-height:calc(88vh - 120px)}
+.graphic .gcap{font-family:var(--mono);font-size:11px;color:var(--muted);padding:8px 4px 0;min-height:2.4em}
+
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .t-lbl{font-size:14px;font-weight:600}
+svg .t-sub{font-size:12px;fill:var(--muted);font-family:var(--mono)}
+svg .t-val{font-size:13px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+svg .t-huge{font-family:var(--display);font-weight:700}
+.tw{transition:all .8s cubic-bezier(.2,.7,.2,1)}
+
+/* Finale */
+.finale{padding-block:110px 60px;border-top:1px solid var(--line);display:grid;gap:26px}
+.finale h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,6vw,72px);line-height:1;margin:0;text-wrap:balance;max-width:14ch}
+.finale h2 em{font-weight:400;font-style:italic;color:var(--hema)}
+.finale p{font-family:var(--display);font-size:clamp(19px,2vw,23px);line-height:1.5;margin:0;max-width:40ch}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px}
+.duo div{border-top:3px solid var(--hema);padding-top:10px}
+.duo div.b{border-color:var(--eosin)}
+.duo h3{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;color:var(--muted);font-weight:500}
+.duo p{font-family:var(--body);font-size:15.5px;line-height:1.55}
+.me{display:grid;gap:10px;max-width:720px;padding-top:30px;border-top:1px solid var(--line)}
+.me h3{font-family:var(--display);font-size:26px;margin:0}
+.me p{font-family:var(--body);font-size:16px;line-height:1.6;max-width:none}
+.me .row{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-size:14.5px}
+
+/* Explorer appendix */
+.appendix{padding-block:80px;border-top:1px solid var(--line);display:grid;gap:22px}
+.appendix h2{font-family:var(--display);font-size:clamp(28px,4vw,40px);margin:0}
+.appendix h3{font-family:var(--display);font-size:21px;margin:0}
+figure{margin:0;display:grid;gap:10px}
 .fhead{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:end;justify-content:space-between}
-.fnum{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.plate{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px;overflow-x:auto}
+.plate{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;overflow-x:auto}
 figcaption{font-size:14.5px;color:var(--muted);max-width:76ch}
-figcaption b{color:var(--ink)}
 .src{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--panel);gap:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--panel);gap:2px;flex-wrap:wrap}
 .seg button{font:500 13px var(--body);color:var(--muted);background:none;border:0;border-radius:999px;padding:6px 13px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--hema);color:var(--panel)}
 .seg button:focus-visible{outline:2px solid var(--eosin);outline-offset:2px}
 .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.controls label{font-family:var(--mono);font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
-.callout{border-left:3px solid var(--eosin);padding:4px 0 4px 16px;font-family:var(--display);font-size:clamp(20px,2.6vw,26px);line-height:1.3;max-width:40ch}
-.callout small{display:block;font-family:var(--body);font-size:14px;color:var(--muted);margin-top:6px}
-svg{display:block}
-svg text{font-family:var(--body);fill:var(--ink)}
-svg .t-lbl{font-size:13px;font-weight:600}
-svg .t-sub{font-size:11px;fill:var(--muted);font-family:var(--mono)}
-svg .t-val{font-size:11.5px;font-family:var(--mono);font-variant-numeric:tabular-nums}
-svg .t-cell{font-family:var(--mono);font-size:10.5px}
-.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:7px 10px;border-radius:4px;max-width:260px;z-index:20;opacity:0;transition:opacity .12s}
-.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted)}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
-.methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.methods div{border:1px solid var(--line);border-radius:6px;padding:16px;background:var(--panel);min-width:0}
+.controls span{font-family:var(--mono);font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.methods div{border:1px solid var(--line);border-radius:6px;padding:14px;background:var(--panel);min-width:0}
 .methods h4{margin:0 0 6px;font:600 14px var(--body);color:var(--hema)}
 .methods ul{margin:0;padding-left:18px;font-size:14px}
-.methods li{margin:3px 0}
-footer{padding-block:48px 64px;border-top:1px solid var(--line);display:grid;gap:12px;font-size:14.5px}
-footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;color:var(--muted)}
-@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.methods{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.cite{font-family:var(--mono);font-size:12.5px;color:var(--muted);border-left:2px solid var(--eosin);padding-left:12px;max-width:80ch}
+footer{padding-block:40px 70px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:7px 10px;border-radius:4px;max-width:260px;z-index:40;opacity:0;transition:opacity .12s}
+
+@media (max-width:860px){
+  .scrolly{grid-template-columns:1fr;gap:0}
+  .graphic{grid-row:1;top:52px;height:auto;z-index:2;padding-block:8px;background:var(--bg)}
+  .graphic svg{max-height:44vh}
+  .steps{grid-row:2;padding-block:4vh 30vh}
+  .step{min-height:62vh;align-items:flex-start}
+  .step .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;opacity:1;max-width:none;font-size:19px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .duo,.methods{grid-template-columns:1fr}
+  nav a:not(.keep){display:none}
+}
+@media (prefers-reduced-motion:reduce){.tw,.step .card{transition:none}.cue i{animation:none}}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b>Dylan Lennon, PhD</b><a href="#gut">Gut biogeography</a><a href="#stool">Stool vs. gut</a><a href="#food">Foodomics</a><a href="#clinic">Clinical cohort</a><a href="#methods">Methods</a><a href="#about">About</a></div></nav>
-<div class="wrap">
+<nav><div class="wrap"><b>Dylan Lennon, PhD</b><a href="#act1">The gut</a><a href="#act3">The twist</a><a href="#act4">The food</a><a href="#act5">The clinic</a><a href="#explore" class="keep">Explore the data</a><a href="#about">About</a></div><div class="progress" id="prog"></div></nav>
 
-<header class="hero" id="top">
-  <div class="eyebrow">PhD dissertation · Nutritional Sciences · University of Florida · 2017</div>
-  <h1>Increased resolution of <em>food intake</em> and the <em>gut microbiome</em>.</h1>
-  <p class="lede">Most nutrition research records diet as fat, protein and carbohydrate, and reads the gut microbiome from a single stool sample. My dissertation built two tools to see both in finer detail: a microbiome map of the whole gut, and a molecular-level database of the foods people actually eat. This site lets you explore what they found, using the data reported in the dissertation.</p>
-  <div class="cite">Lennon D. <i>Increased Resolution of Food Intake and Gut Microbiome in Precision Dietary Therapy.</i> PhD dissertation, University of Florida, 2017. Chair: Peggy R. Borum, PhD. ProQuest ISBN 9780438166523.</div>
-  <div class="stats">
-    <div class="stat"><strong>288</strong><span>gut microbiome samples from 12 neonatal piglets</span></div>
-    <div class="stat"><strong>8.8M</strong><span>16S rRNA reads sequenced (V1 to V3)</span></div>
-    <div class="stat b"><strong>17,363</strong><span>molecular food profiles in the foodomics database</span></div>
-    <div class="stat b"><strong>8,999</strong><span>patient-days of molecular-level intake data</span></div>
-  </div>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">A PhD story · Nutritional Sciences · University of Florida</div>
+  <h1>What a stool sample <em>can't</em> tell you.</h1>
+  <p class="lede">I spent my PhD trying to see the newborn gut and the food that feeds it in higher resolution. Here is what turned up, told with the data.</p>
+  <div class="cue"><i></i>Scroll to begin</div>
 </header>
 
-<!-- ============ CHAPTER 2 ============ -->
-<section id="gut">
-  <div><div class="chap">Chapter 2 · Gut microbiome biogeography</div>
-  <h2>A stool sample is one point at the end of a long tract</h2></div>
-  <p>Six pairs of littermate piglets, one sampled at day of life 1 to 2 and one at day 9 to 10, were sampled at 13 points along the gut: three in each third of the small intestine and four along the large intestine. At every point I collected both the lumenal contents and the adherent mucosa, giving 26 sites per piglet. The last large-intestine site sits closest to what a stool sample captures.</p>
-
-  <figure>
-    <div class="fhead"><div class="fnum">Figure 1 · Sampling design (after dissertation Fig. 2-1)</div></div>
-    <div class="plate"><svg id="map" viewBox="0 30 940 470" width="100%" style="min-width:640px" role="img" aria-label="Diagram of the piglet gut with 13 sampling longitudes colored by region, each sampled in lumen and mucosa"></svg></div>
-    <div class="legend"><span><i style="background:var(--duo)"></i>Duodenum, sites 1 to 3</span><span><i style="background:var(--jej)"></i>Jejunum, 4 to 6</span><span><i style="background:var(--ile)"></i>Ileum, 7 to 9</span><span><i style="background:var(--col)"></i>Colon, 10 to 13</span></div>
-    <figcaption>Hover or tap a site to see how many lumen and mucosa samples were sequenced there. <span class="src">Table 2-2. Positions along the tract are schematic.</span></figcaption>
-  </figure>
-
-  <figure>
-    <div class="fhead"><div class="fnum">Figure 2 · Who lives there, by age</div></div>
-    <div class="plate"><svg id="overall" viewBox="0 0 940 170" width="100%" style="min-width:600px" role="img" aria-label="Phylum composition of all sequences at day 1 to 2 and day 9 to 10"></svg></div>
-    <figcaption><b>The community changes fast in the first ten days.</b> Firmicutes dominate at both ages, but Bacteroidetes rises from 0.5% to 13.9% of sequences and Proteobacteria falls from 27.4% to 10.8%. <span class="src">Table 2-5.</span></figcaption>
-  </figure>
-
-  <figure id="explore">
-    <div class="fhead">
-      <div><div class="fnum">Figure 3 · Explore the gut, region by region</div><h3>Relative abundance of each phylum</h3></div>
-      <div class="controls">
-        <label for="a-old">Age</label><div class="seg" role="group" aria-label="Age"><button id="a-young" type="button" aria-pressed="false">Day 1 to 2</button><button id="a-old" type="button" aria-pressed="true">Day 9 to 10</button></div>
-        <label for="r-lumen">Compartment</label><div class="seg" role="group" aria-label="Compartment"><button id="r-lumen" type="button" aria-pressed="true">Lumen</button><button id="r-mucosa" type="button" aria-pressed="false">Mucosa</button></div>
-      </div>
-    </div>
-    <div class="plate"><svg id="heat" viewBox="0 0 940 400" width="100%" style="min-width:640px" role="img" aria-label="Heatmap of phylum relative abundance by gut region"></svg></div>
-    <figcaption>Each cell is the mean relative abundance (%) across piglets; hover for the standard deviation. The right column is the Kruskal-Wallis q-value for differences across the four regions, after Benjamini-Hochberg correction. Dashes mark phyla not reported for that group. <span class="src">Tables 2-9 to 2-12.</span> <span id="heatNote"></span></figcaption>
-  </figure>
-
-  <figure>
-    <div class="fhead">
-      <div><div class="fnum">Figure 4 · What shapes the community</div><h3>Share of community differences explained by gut location</h3></div>
-      <div class="controls"><label for="m-unweighted">Distance</label><div class="seg" role="group" aria-label="Distance metric"><button id="m-unweighted" type="button" aria-pressed="true">Unweighted UniFrac</button><button id="m-weighted" type="button" aria-pressed="false">Weighted UniFrac</button><button id="m-bray" type="button" aria-pressed="false">Bray-Curtis</button></div></div>
-    </div>
-    <div class="plate"><svg id="loc" viewBox="0 0 940 230" width="100%" style="min-width:600px" role="img" aria-label="PERMANOVA R squared for gut location by age and compartment"></svg></div>
-    <figcaption><b>Biogeography sharpens with age.</b> At day 1 to 2, location explains only 5.6% (lumen) and 7.9% (mucosa) of differences between communities, and lumen versus mucosa matters more. By day 9 to 10, location explains about a third. The pattern holds across all three distance metrics. PERMANOVA with 999 permutations; PERMDISP was non-significant except where noted in the dissertation. <span class="src">Tables 2-6 to 2-8.</span></figcaption>
-  </figure>
-
-  <div class="two">
-    <figure>
-      <div class="fnum">Figure 5 · Lumen versus mucosa</div>
-      <div class="plate"><svg id="rad" viewBox="0 0 450 230" width="100%" role="img" aria-label="PERMANOVA R squared for radius by age and gut region"></svg></div>
-      <figcaption>Variation explained by compartment (lumen vs. mucosa). Significant in the small intestine at both ages; in the large intestine only at day 1 to 2. <span class="src">Table 2-13.</span></figcaption>
-    </figure>
-    <figure>
-      <div class="fnum">Figure 6 · Day 1 to 2 versus day 9 to 10</div>
-      <div class="plate"><svg id="agefx" viewBox="0 0 450 230" width="100%" role="img" aria-label="PERMANOVA R squared for age by gut region and compartment"></svg></div>
-      <figcaption>Variation explained by age. Every comparison p = 0.001, with non-significant PERMDISP. <span class="src">Table 2-19.</span></figcaption>
-    </figure>
+<!-- ================= ACT I ================= -->
+<section class="act" id="act1"><div class="num">Part one</div><h2>Going upstream</h2></section>
+<div class="scrolly" data-graphic="gut">
+  <div class="steps">
+    <div class="step"><div class="card">When scientists want to know what lives in a baby's gut, they almost always look at the same thing: <b>a stool sample</b>. It's painless to collect, and it's what at-home microbiome tests are built on.</div></div>
+    <div class="step"><div class="card">But stool comes from the very end of the gut. The small intestine, where most nutrients are absorbed and the immune system gets much of its education, only reaches us <b>secondhand</b>.</div></div>
+    <div class="step"><div class="card">So I went upstream. In a piglet neonatal intensive care unit, a translational model of the human newborn, I sampled <b>13 points</b> along the whole intestine: three in each third of the small intestine and four along the colon.</div></div>
+    <div class="step"><div class="card">At every point I took two samples: what flows through the gut, the <b>lumen</b>, and the lining itself, the <b>mucosa</b>. Twenty-six sites per animal, each a different neighborhood.</div></div>
+    <div class="step"><div class="card"><span class="big" data-count="288">288</span>samples from six pairs of littermates, one sampled at <b>1 to 2 days old</b> and one at <b>9 to 10 days old</b>, read with 8.8 million 16S rRNA sequences.<small>Dissertation Ch. 2, Tables 2-1 and 2-2</small></div></div>
   </div>
-</section>
-
-<section id="stool">
-  <div><div class="chap">Chapter 2 · Stool versus gut</div>
-  <h2>How well does stool stand in for the rest of the gut?</h2></div>
-  <p>For OTUs found both at a gut site and in stool, I regressed their abundance at the site on their abundance in stool. In the youngest piglets stool was a reasonable proxy almost everywhere. By day 9 to 10 it told you very little about the small intestine, and little about the large-intestine mucosa.</p>
-  <figure>
-    <div class="fhead">
-      <div class="fnum">Figure 7 · R² between stool and gut-site abundance of shared OTUs</div>
-      <div class="controls"><div class="seg" role="group" aria-label="Age"><button id="s-young" type="button" aria-pressed="false">Day 1 to 2</button><button id="s-old" type="button" aria-pressed="true">Day 9 to 10</button><button id="s-both" type="button" aria-pressed="false">Compare</button></div></div>
-    </div>
-    <div class="plate"><svg id="stoolfx" viewBox="0 0 940 280" width="100%" style="min-width:600px" role="img" aria-label="R squared of stool versus gut site abundances"></svg></div>
-    <figcaption>An R² of 1 would mean stool perfectly predicts a site. All panels P &lt; 0.05. Within each phylum, the OTUs found only at a site often came from more families than the OTUs it shared with stool, so each site holds a population that stool never sees. <span class="src">Figure 2-14; Tables 2-29 to 2-32.</span></figcaption>
-  </figure>
-  <div class="callout">By day 10, stool explained 7% of the variation in small-intestine lumen abundances, down from 67% at day 1 to 2.<small>The first ten days are when biogeography forms, and when stool starts to diverge from the gut it is meant to represent.</small></div>
-</section>
-
-<!-- ============ CHAPTER 3 ============ -->
-<section id="food">
-  <div><div class="chap">Chapter 3 · Foodomics</div>
-  <h2>From a nutrition label to molecules</h2></div>
-  <p>A Nutrition Facts label lists a handful of numbers. The USDA reference database lists dozens of molecules for each food, but not for the brand on the shelf. Foodomics links the two: it matches each brand-name food to USDA reference profiles, then adjusts the molecular profile to agree with the label, producing estimated fatty acids, amino acids and carbohydrate types for products whose composition was otherwise unknown. Profiles live in a versioned MySQL database, so a reformulated product keeps its history.</p>
-
-  <figure>
-    <div class="fhead"><div class="fnum">Figure 8 · The resolution ladder</div></div>
-    <div class="plate"><svg id="ladder" viewBox="0 0 940 290" width="100%" style="min-width:640px" role="img" aria-label="One food resolved into three macronutrients and then into fatty acids, amino acids and carbohydrate types"></svg></div>
-    <figcaption>Each cell in the bottom row is one component foodomics estimates. Cell widths show how many components there are, not amounts. <span class="src">Concept from Chapter 3 and Figure 3-6.</span></figcaption>
-  </figure>
-
-  <div class="stats">
-    <div class="stat b"><strong>2,731</strong><span>brand-name foods profiled at the molecular level</span></div>
-    <div class="stat b"><strong>8,557</strong><span>label collections, 1997 to 2016</span></div>
-    <div class="stat"><strong>8,789</strong><span>USDA SR28 reference profiles linked</span></div>
-    <div class="stat"><strong>17,363</strong><span>total profiles in the database</span></div>
-  </div>
-
-  <div class="two">
-    <figure>
-      <div class="fnum">Figure 9 · Most-collected categories</div>
-      <div class="plate"><svg id="cats" viewBox="0 0 450 220" width="100%" role="img" aria-label="Number of brand-name products by category"></svg></div>
-      <figcaption>The database was built around a pediatric ketogenic therapy population, which is why dairy, eggs and baby foods lead. 424 products had less than 25% of energy from carbohydrate. <span class="src">Chapter 3 results.</span></figcaption>
-    </figure>
-    <figure>
-      <div class="fnum">Figure 10 · Brands change their recipes</div>
-      <div class="plate"><svg id="changes" viewBox="0 0 450 220" width="100%" role="img" aria-label="Share of label changes by macronutrient and magnitude"></svg></div>
-      <figcaption>Of 964 foods collected more than once, 449 (46.5%) changed at least one macronutrient, for 1,411 changes in all. Carbohydrate changed most often. Bars show the share of changes exceeding each magnitude. <span class="src">Tables 3-1 and 3-2.</span></figcaption>
-    </figure>
-  </div>
-  <p>In a modeled ketogenic burrito meal, swapping two sets of equivalent brands with identical gram amounts doubled the carbohydrate dose. A year of simulated brand switching for that one meal produced eight distinct "foodomic spaces" in a principal coordinates analysis. <span class="src">Figures 3-13 to 3-16.</span></p>
-</section>
-
-<!-- ============ CHAPTER 4 ============ -->
-<section id="clinic">
-  <div><div class="chap">Chapter 4 · Foodomics in the clinic</div>
-  <h2>The same diet ratio does not mean the same diet</h2></div>
-  <p>Ketogenic therapy for epilepsy is prescribed as a ratio: grams of fat to grams of protein plus carbohydrate. I applied foodomics to the brand-specific intake records of children in UF's long-running precision ketogenic therapy cohort, people with seizures that had failed at least two medications, with records spanning up to 20 years.</p>
-  <figure>
-    <div class="fnum">Figure 11 · The cohort</div>
-    <div class="plate"><svg id="cohort" viewBox="0 0 940 150" width="100%" style="min-width:600px" role="img" aria-label="Patients by feeding route and total days of intake"></svg></div>
-    <figcaption>Patients met inclusion criteria including at least 180 days on therapy. Intake was split by feeding route and by ratio stratum: low (under 2.5:1), moderately low (2.5 to 3.5:1), typical (3.5 to 4.5:1) and above typical (over 4.5:1). <span class="src">Chapter 4 methods.</span></figcaption>
-  </figure>
-  <div class="callout">Within every ratio stratum and every feeding route, the saturated, monounsaturated and polyunsaturated make-up of fat intake varied independently of the ratio.<small>Patients on the same prescription can be eating very different fats. Foodomics makes that visible, and it opens the door to prescribing at the level of fatty acids. Figures 4-2 to 4-7.</small></div>
-</section>
-
-<section id="methods">
-  <div><div class="chap">Methods</div><h2>How the analysis was done</h2></div>
-  <div class="methods">
-    <div><h4>Sequencing and processing</h4><ul>
-      <li>16S rRNA V1 to V3, Illumina MiSeq</li><li>Quality filter Q &gt; 30; reads joined with FLASH</li><li>QIIME 1.8 open-reference OTU picking, 97% (USEARCH), GreenGenes 13_8, PyNAST</li><li>Chimera removal with UCHIME</li><li>Run on UF HiPerGator</li></ul></div>
-    <div><h4>Normalization and filtering</h4><ul>
-      <li>Occupancy classification of OTUs (always high, switch, always low) as a biological filter</li><li>Site-level geometric-mean normalization (DESeq2 size factors) in place of rarefying, so no reads were discarded</li></ul></div>
-    <div><h4>Statistics, in R 3.3.1</h4><ul>
-      <li>Unweighted and weighted UniFrac, Bray-Curtis</li><li>PERMANOVA (vegan adonis) and PERMDISP, 999 permutations</li><li>PCoA in phyloseq</li><li>Kruskal-Wallis with Benjamini-Hochberg correction</li><li>Linear regression of site vs. stool abundances</li></ul></div>
-    <div><h4>Foodomics database</h4><ul>
-      <li>Nutrition Facts Labels collected via Qualtrics and audited</li><li>Linked to USDA SR28 seed profiles, then adjusted to label values</li><li>Persistent, versioned MySQL schema</li></ul></div>
-    <div><h4>Foodomic analysis</h4><ul>
-      <li>Ternary plots of macronutrient, fat saturation, PUFA and amino acid profiles</li><li>PCA and PCoA of molecular profiles</li><li>365-day brand-switching simulation</li></ul></div>
-    <div><h4>Animal and human research</h4><ul>
-      <li>Piglet Neonatal ICU model (<i>Lab Anim</i> 2011), UF IACUC approved</li><li>Pediatric ketogenic therapy cohort, IRB approved, records 1995 to 2016</li></ul></div>
-  </div>
-</section>
-
-<footer id="about">
-  <h3>About the author</h3>
-  <p>I'm Dylan Lennon, a nutrition scientist. I earned my PhD in Nutritional Sciences at the University of Florida with Dr. Peggy Borum, spent five years on the nutrition therapy staff of UF's Precision Ketogenic Therapy Program, and was a postdoctoral fellow at the Harvard T.H. Chan School of Public Health, analyzing cohort data from Madagascar and Kiribati. I'm now returning to research and data analysis on diet, the microbiome and early life.</p>
-  <div class="row"><span>dylanjlennon@gmail.com</span><span>Asheville, North Carolina</span><a href="https://www.linkedin.com/in/dylanlennonasheville">LinkedIn</a></div>
-  <p class="src">Figures on this site were redrawn from the tables and text of the dissertation. Figure 1 and Figure 8 are schematics; all other charts plot reported values. © 2017 Dylan Lennon.</p>
-</footer>
+  <div class="graphic"><div class="frame"><svg id="g-gut" viewBox="0 30 940 520" role="img" aria-label="The piglet gut with sampling sites appearing step by step"></svg><div class="gcap" id="c-gut"></div></div></div>
 </div>
+
+<!-- ================= ACT II ================= -->
+<section class="act" id="act2"><div class="num">Part two</div><h2>A map forms in ten days</h2></section>
+<div class="scrolly" data-graphic="loc">
+  <div class="steps">
+    <div class="step"><div class="card">The first surprise: in day-old piglets, it barely mattered where in the gut I looked. Location explained just <b>5.6%</b> of the differences between microbial communities.</div></div>
+    <div class="step"><div class="card">Eight days later, location explained <b>a third</b>. In just over a week, the gut had sorted its microbes into neighborhoods.<small>PERMANOVA on unweighted UniFrac distances, 999 permutations. Tables 2-6 to 2-8</small></div></div>
+    <div class="step"><div class="card">And the neighborhoods are distinct. <b>Firmicutes</b> and <b>Proteobacteria</b> crowd the small intestine. <b>Bacteroidetes</b>, almost absent at birth, has claimed the colon.<small>Mean relative abundance, lumen, day 9 to 10. Table 2-9</small></div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-loc" viewBox="0 0 940 520" role="img" aria-label="Share of community differences explained by gut location, by age"></svg><div class="gcap" id="c-loc"></div></div></div>
+</div>
+
+<!-- ================= ACT III ================= -->
+<section class="act" id="act3"><div class="num">Part three</div><h2>The twist</h2></section>
+<div class="scrolly" data-graphic="stool">
+  <div class="steps">
+    <div class="step"><div class="card">Which raises the question that matters to anyone reading a stool test: <b>does stool still reflect what's happening upstream?</b></div></div>
+    <div class="step"><div class="card">In the youngest piglets, mostly yes. For microbes found in both places, stool abundances predicted the small intestine with an R² of <b>0.67</b>, and the colon with <b>0.70</b>.</div></div>
+    <div class="step"><div class="card">By day 10, that link had collapsed. Stool explained <b>7%</b> of the variation in the small intestine's contents, and essentially <b>none</b> on its lining.<small>Linear regression of shared OTU abundances, site vs. stool. Figure 2-14</small></div></div>
+    <div class="step"><div class="card">The same ten days that build the gut's map are the days stool stops being a faithful copy of it. <b>Stool still reads the colon's contents. It reads the rest of the gut less and less.</b></div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-stool" viewBox="0 0 940 520" role="img" aria-label="How well stool predicts each gut region at two ages"></svg><div class="gcap" id="c-stool"></div></div></div>
+</div>
+
+<!-- ================= ACT IV ================= -->
+<section class="act" id="act4"><div class="num">Part four</div><h2>The other side of the gut</h2></section>
+<div class="scrolly" data-graphic="food">
+  <div class="steps">
+    <div class="step"><div class="card">Everything a gut microbe eats, it gets from us. And diet has the same resolution problem. Most nutrition science records a food as <b>a few numbers off a label</b>.</div></div>
+    <div class="step"><div class="card">Fat, protein, carbohydrate. That's where most diet records stop.</div></div>
+    <div class="step"><div class="card">But fat is dozens of fatty acids. Protein is twenty amino acids. Carbohydrate is sugars, starches and fiber. I built <b>foodomics</b> to see them: a database linking <b>2,731</b> brand-name foods to <b>8,789</b> USDA molecular profiles.<small>17,363 profiles from 8,557 label collections, 1997 to 2016. Ch. 3</small></div></div>
+    <div class="step"><div class="card">Then I found that food doesn't hold still. Of 964 foods we tracked over time, <b>46.5%</b> changed their label at least once. Carbohydrate changed most often.<small>1,411 changes in all. Tables 3-1 and 3-2</small></div></div>
+    <div class="step"><div class="card">In one modeled meal, swapping between equivalent brands at identical gram weights <b>doubled the carbohydrate</b>. For a child on ketogenic therapy, a carbohydrate spike can mean a breakthrough seizure.<small>Burrito meal model, brand set A vs. B. Figure 3-13</small></div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-food" viewBox="0 0 940 520" role="img" aria-label="One food resolved from a label to macronutrients to molecules"></svg><div class="gcap" id="c-food"></div></div></div>
+</div>
+
+<!-- ================= ACT V ================= -->
+<section class="act" id="act5"><div class="num">Part five</div><h2>Same prescription, different diet</h2></section>
+<div class="scrolly" data-graphic="clinic">
+  <div class="steps">
+    <div class="step"><div class="card">I brought foodomics into the clinic. UF's precision ketogenic therapy program, where I spent five years on the nutrition therapy staff, follows children whose seizures <b>medication couldn't control</b>.</div></div>
+    <div class="step"><div class="card"><span class="big" data-count="8999">8,999</span>days of brand-specific intake from <b>53 children</b>, some records spanning up to 20 years, each day resolved to the molecule.</div></div>
+    <div class="step"><div class="card">The therapy is prescribed as one number, a ratio of fat to protein plus carbohydrate. But at every ratio, <b>the kind of fat</b> children actually ate varied on its own. Same prescription, different diet.<small>Fat saturation profiles by ratio stratum and feeding route. Figures 4-2 to 4-7</small></div></div>
+  </div>
+  <div class="graphic"><div class="frame"><svg id="g-clinic" viewBox="0 0 940 520" role="img" aria-label="The ketogenic therapy cohort and its fat intake"></svg><div class="gcap" id="c-clinic"></div></div></div>
+</div>
+
+<section class="finale">
+  <div class="eyebrow">What it adds up to</div>
+  <h2>Higher resolution on <em>both sides</em> of the gut.</h2>
+  <p>What goes in, measured to the molecule. What lives inside, mapped site by site. And a reminder that the first days of life move fast: the window when the gut builds its map is the window when a simple sample starts to miss it.</p>
+  <div class="duo">
+    <div><h3>What I'd bring</h3><p>Longitudinal study design, compositional microbiome statistics in R, clean relational data built to last, and the habit of asking what a measurement can and can't see before trusting it.</p></div>
+    <div class="b"><h3>Where I want to work</h3><p>Early-life microbiome and nutrition data, followed over time and explained clearly to the families and clinicians who depend on it.</p></div>
+  </div>
+  <div class="me" id="about">
+    <h3>About me</h3>
+    <p>I'm Dylan Lennon. I earned my PhD in Nutritional Sciences at the University of Florida with Dr. Peggy Borum, spent five years on the nutrition therapy staff of UF's Precision Ketogenic Therapy Program working directly with patients and families, and was a postdoctoral fellow at the Harvard T.H. Chan School of Public Health analyzing cohort data from Madagascar and Kiribati. After a few years building a business in Asheville, I'm returning to research and data analysis.</p>
+    <div class="row"><span>dylanjlennon@gmail.com</span><span>Asheville, North Carolina</span><a href="https://www.linkedin.com/in/dylanlennonasheville">LinkedIn</a><a href="https://github.com/dylanjlennon/dissertation">Source and data</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX ================= -->
+<section class="appendix" id="explore">
+  <div class="eyebrow">Appendix</div>
+  <h2>Explore the data yourself</h2>
+  <div class="cite">Lennon D. <i>Increased Resolution of Food Intake and Gut Microbiome in Precision Dietary Therapy.</i> PhD dissertation, University of Florida, 2017. Chair: Peggy R. Borum, PhD. ProQuest ISBN 9780438166523.</div>
+
+  <figure>
+    <div class="fhead"><h3>Phylum abundance by gut region</h3>
+      <div class="controls"><span>Age</span><div class="seg" role="group" aria-label="Age"><button id="a-young" type="button" aria-pressed="false">Day 1 to 2</button><button id="a-old" type="button" aria-pressed="true">Day 9 to 10</button></div>
+      <span>Compartment</span><div class="seg" role="group" aria-label="Compartment"><button id="r-lumen" type="button" aria-pressed="true">Lumen</button><button id="r-mucosa" type="button" aria-pressed="false">Mucosa</button></div></div></div>
+    <div class="plate"><svg id="heat" viewBox="0 0 940 400" width="100%" style="min-width:640px" role="img" aria-label="Heatmap of phylum relative abundance by gut region"></svg></div>
+    <figcaption>Mean relative abundance (%) across piglets; hover for the standard deviation. Right column: Kruskal-Wallis q-value across regions, Benjamini-Hochberg corrected. Dashes mark phyla not reported. <span class="src">Tables 2-9 to 2-12.</span></figcaption>
+  </figure>
+
+  <figure>
+    <div class="fhead"><h3>Community differences explained by gut location</h3>
+      <div class="controls"><span>Distance</span><div class="seg" role="group" aria-label="Distance metric"><button id="m-unweighted" type="button" aria-pressed="true">Unweighted UniFrac</button><button id="m-weighted" type="button" aria-pressed="false">Weighted UniFrac</button><button id="m-bray" type="button" aria-pressed="false">Bray-Curtis</button></div></div></div>
+    <div class="plate"><svg id="loc" viewBox="0 0 940 230" width="100%" style="min-width:600px" role="img" aria-label="PERMANOVA R squared for gut location"></svg></div>
+    <figcaption>The age pattern holds across all three distance metrics. Lumen vs. mucosa explained 14.8% (small intestine) and 11.7% (large intestine) at day 1 to 2; 8.4% and 3.2% (not significant) at day 9 to 10. Age explained 19 to 42% depending on region and compartment. <span class="src">Tables 2-6 to 2-8, 2-13, 2-19.</span></figcaption>
+  </figure>
+
+  <div class="methods">
+    <div><h4>Sequencing and processing</h4><ul><li>16S rRNA V1 to V3, Illumina MiSeq</li><li>Q &gt; 30 quality filter; FLASH read joining</li><li>QIIME 1.8 open-reference OTUs at 97%, GreenGenes 13_8</li><li>UCHIME chimera removal; UF HiPerGator</li></ul></div>
+    <div><h4>Normalization and statistics</h4><ul><li>Occupancy classification as a biological filter</li><li>Site-level geometric-mean normalization (DESeq2) instead of rarefying</li><li>UniFrac and Bray-Curtis; PERMANOVA and PERMDISP (vegan); PCoA (phyloseq)</li><li>Kruskal-Wallis, Benjamini-Hochberg; R 3.3.1</li></ul></div>
+    <div><h4>Foodomics</h4><ul><li>Nutrition Facts Labels linked to USDA SR28 seed profiles, then adjusted to label values</li><li>Versioned MySQL database</li><li>Ternary plots, PCA and PCoA of molecular profiles; 365-day brand-switching model</li></ul></div>
+  </div>
+</section>
+</div>
+<footer><div class="wrap">Charts redraw values reported in the dissertation; the gut diagram, the food ladder and the fat-composition panel in part five are schematics. © 2017 Dylan Lennon. <a href="https://github.com/dylanjlennon/dissertation">Source and data on GitHub</a>.</div></footer>
 <div class="tip" id="tip" role="tooltip"></div>
 
 <script src="data.js"></script>
 <script>
 (function(){
 const D=window.DISS, NS="http://www.w3.org/2000/svg";
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
 const tx=(p,x,y,s,cls,ex)=>{ex=Object.assign({},ex||{});const f=ex.fill;delete ex.fill;const t=el("text",Object.assign({x,y,class:cls||""},ex),p);if(f)t.style.fill=f;t.textContent=s;return t};
+const st=(e,o)=>{for(const k in o)e.style[k]=o[k];return e};
 const tip=document.getElementById("tip");
-function hover(node,html){node.style.cursor="default";node.setAttribute("tabindex","0");
-  const show=e=>{tip.innerHTML=html;tip.style.opacity=1;const r=node.getBoundingClientRect();
-    const x=(e&&e.clientX)||r.left+r.width/2, y=(e&&e.clientY)||r.top;tip.style.left=Math.min(x+12,innerWidth-270)+"px";tip.style.top=(y+14)+"px"};
-  const hide=()=>tip.style.opacity=0;
-  node.addEventListener("mousemove",show);node.addEventListener("mouseleave",hide);node.addEventListener("focus",()=>show());node.addEventListener("blur",hide);}
+function hover(node,html){node.setAttribute("tabindex","0");const show=e=>{tip.innerHTML=html;tip.style.opacity=1;const r=node.getBoundingClientRect();const x=(e&&e.clientX)||r.left+r.width/2,y=(e&&e.clientY)||r.top;tip.style.left=Math.min(x+12,innerWidth-270)+"px";tip.style.top=(y+14)+"px"};const hide=()=>tip.style.opacity=0;node.addEventListener("mousemove",show);node.addEventListener("mouseleave",hide);node.addEventListener("focus",()=>show());node.addEventListener("blur",hide);}
 const PH={Firmicutes:"--p-firm",Proteobacteria:"--p-prot",Bacteroidetes:"--p-bact",Cyanobacteria:"--p-cyan",TM7:"--p-tm7",Actinobacteria:"--p-actino",Fusobacteria:"--p-fuso",Synergistetes:"--p-syn",Tenericutes:"--p-ten"};
 const REG=["--duo","--jej","--ile","--col"];
-const fmt=n=>n.toLocaleString("en-US");
+function mix(hex,amt){const h=hex.replace("#","");if(h.length<6)return hex;const n=parseInt(h,16);let r=n>>16,g=(n>>8)&255,b=n&255;const t=amt>0?255:0,a=Math.abs(amt);return `rgb(${Math.round(r+(t-r)*a)},${Math.round(g+(t-g)*a)},${Math.round(b+(t-b)*a)})`}
+
+/* =============== Graphic: GUT =============== */
+const G={};
+G.gut=(function(){
+  const s=document.getElementById("g-gut"), cap=document.getElementById("c-gut");
+  let parts={};
+  function build(){s.innerHTML="";parts={};
+    const d="M 92 92 C 40 120, 60 210, 140 196 C 196 186, 196 120, 238 128 C 290 138, 262 236, 316 238 C 372 240, 352 118, 410 122 C 468 126, 444 240, 502 240 C 556 240, 540 140, 592 150 C 630 158, 626 236, 662 250 C 700 266, 790 262, 790 200 C 790 140, 700 130, 694 186 C 690 236, 790 262, 820 300 C 846 334, 852 352, 856 374";
+    el("path",{d,fill:"none",stroke:css("--tract-edge"),"stroke-width":30,"stroke-linecap":"round","stroke-linejoin":"round"},s);
+    const tr=el("path",{d,fill:"none",stroke:css("--tract"),"stroke-width":25,"stroke-linecap":"round","stroke-linejoin":"round"},s);
+    const L=tr.getTotalLength();
+    // small intestine highlight (dashed glow) for step 1
+    const siLen=L*.6;
+    parts.si=st(el("path",{d,fill:"none",stroke:css("--hema"),"stroke-width":25,"stroke-linecap":"round","stroke-dasharray":`${siLen} ${L}`,class:"tw"},s),{opacity:0});
+    parts.labels=[["Stomach",70,62],["Small intestine",330,92],["Colon",748,112]].map(r=>st(tx(s,r[1],r[2],r[0],"t-lbl tw",{"text-anchor":"middle"}),{opacity:.9}));
+    parts.siNote=st(tx(s,330,110,"where most nutrients are absorbed","t-sub tw",{"text-anchor":"middle"}),{opacity:0});
+    // stool
+    parts.stoolLine=el("path",{d:"M 856 386 L 856 410",stroke:css("--muted"),"stroke-width":1.5,"stroke-dasharray":"3 3"},s);
+    parts.stoolHalo=st(el("circle",{cx:856,cy:424,r:22,fill:css("--eosin"),class:"tw"},s),{opacity:.18});
+    parts.stool=el("circle",{cx:856,cy:424,r:10,fill:css("--eosin")},s);
+    parts.stoolT=tx(s,880,429,"Stool","t-lbl");
+    // sites
+    const pos=i=>i<9?.12+.46*((i+.5)/9):.66+.32*((i-9+.5)/4);
+    parts.sites=[];
+    for(let i=0;i<13;i++){const p=tr.getPointAtLength(pos(i)*L);const r=i<3?0:i<6?1:i<9?2:3;
+      const g=el("g",{},s);
+      const m=st(el("circle",{cx:p.x,cy:p.y,r:7,fill:css("--eosin"),stroke:css("--panel"),"stroke-width":2,class:"tw"},g),{opacity:0,transitionDelay:(i*40)+"ms"});
+      const c=st(el("circle",{cx:p.x,cy:p.y,r:11,fill:css(REG[r]),stroke:css("--panel"),"stroke-width":2.5,class:"tw"},g),{opacity:0,transitionDelay:(i*70)+"ms"});
+      const t=st(tx(g,p.x,p.y+4,String(i+1),"tw",{"text-anchor":"middle","font-size":11,"font-weight":600,"font-family":"IBM Plex Mono, monospace",fill:css("--panel")}),{opacity:0,transitionDelay:(i*70)+"ms"});
+      hover(g,`<b>Site ${i+1}</b> · ${D.regions[r]}<br>${D.samples.lumen[i]} lumen + ${D.samples.mucosa[i]} mucosa samples`);
+      parts.sites.push({c,t,m,p});}
+    // radial inset
+    const ins=st(el("g",{transform:"translate(70 300)",class:"tw"},s),{opacity:0});parts.inset=ins;
+    el("circle",{cx:70,cy:70,r:64,fill:"none",stroke:css("--tract-edge"),"stroke-width":14},ins);
+    el("circle",{cx:70,cy:70,r:46,fill:css("--tract"),opacity:.7},ins);
+    el("circle",{cx:70,cy:70,r:9,fill:css("--hema")},ins);el("circle",{cx:70,cy:6,r:9,fill:css("--eosin")},ins);
+    tx(ins,86,75,"lumen","t-sub");tx(ins,86,10,"mucosa","t-sub");
+    tx(ins,70,162,"Two samples per site","t-lbl",{"text-anchor":"middle"});tx(ins,70,180,"13 × 2 = 26 sites","t-sub",{"text-anchor":"middle"});
+    // counters
+    const cnt=st(el("g",{transform:"translate(330 430)",class:"tw"},s),{opacity:0});parts.cnt=cnt;
+    [["12","piglets"],["2","ages"],["288","samples"],["8.8M","reads"]].forEach(([n,l],i)=>{tx(cnt,i*135,40,n,"t-huge",{"font-size":40});tx(cnt,i*135,62,l,"t-sub");});
+  }
+  function set(k){
+    const P=parts;const on=(e,v)=>e.style.opacity=v;
+    P.si.style.opacity=k===1?.55:0; on(P.siNote,k===1?1:0);
+    P.stoolHalo.style.opacity=k===0?.35:.12; P.stoolHalo.setAttribute("r",k===0?30:18);
+    P.sites.forEach(x=>{on(x.c,k>=2?1:0);on(x.t,k>=2?1:0);on(x.m,k>=3?1:0);
+      x.m.setAttribute("cx",x.p.x+(k>=3?9:0));x.m.setAttribute("cy",x.p.y-(k>=3?9:0));});
+    on(P.inset,k>=3?1:0); on(P.cnt,k>=4?1:0);
+    cap.textContent=["The neonatal piglet gut, from stomach to rectum. Schematic.","Most of the intestine sits upstream of the sample.","13 sampling longitudes. Hover a site for its sample count (Table 2-2).","Each longitude sampled in lumen and mucosa.","Six littermate pairs: day 1 to 2 and day 9 to 10."][k];
+  }
+  return {build,set};
+})();
+
+/* =============== Graphic: LOCATION =============== */
+G.loc=(function(){
+  const s=document.getElementById("g-loc"),cap=document.getElementById("c-loc");let P={};
+  function build(){s.innerHTML="";P={bars:[],stack:null};
+    const m=D.location.unweighted, X=230,W=640,max=40;
+    P.axis=el("g",{class:"tw"},s);
+    for(let v=0;v<=max;v+=10){const x=X+W*v/max;el("line",{x1:x,x2:x,y1:60,y2:340,stroke:css("--line")},P.axis);tx(P.axis,x,362,v+"%","t-sub",{"text-anchor":"middle"});}
+    tx(P.axis,X,40,"Share of community differences explained by location","t-sub");
+    [["young","lumen","Day 1 to 2, lumen"],["young","mucosa","Day 1 to 2, mucosa"],["old","lumen","Day 9 to 10, lumen"],["old","mucosa","Day 9 to 10, mucosa"]].forEach(([a,r,lab],i)=>{
+      const y=72+i*66, v=m[a][r][0];
+      tx(P.axis,X-12,y+28,lab,"",{"text-anchor":"end","font-size":14});
+      const rect=st(el("rect",{x:X,y,height:42,rx:3,fill:a==="old"?css("--hema"):css("--off"),class:"tw"},P.axis),{width:"0px"});
+      const val=st(tx(P.axis,X+8,y+27,v+"%","t-val tw",{"font-size":16,"font-weight":600}),{opacity:0});
+      P.bars.push({a,v,rect,val,W:W*v/max,X});});
+    // stacked regions
+    const sg=st(el("g",{class:"tw"},s),{opacity:0});P.stack=sg;
+    const g=D.regional.old.lumen, ph=["Firmicutes","Proteobacteria","Bacteroidetes","Fusobacteria","TM7"];
+    tx(sg,60,40,"Mean relative abundance in the lumen, day 9 to 10 (%)","t-sub");
+    const X2=140,H=300,Y0=360,bw=120,gap=60,max2=35;
+    for(let v=0;v<=max2;v+=10){const y=Y0-H*v/max2;el("line",{x1:X2-10,x2:X2+4*(bw+gap),y1:y,y2:y,stroke:css("--line")},sg);tx(sg,X2-18,y+4,v+"","t-sub",{"text-anchor":"end"});}
+    D.regions.forEach((r,ci)=>{let y=Y0;const x=X2+ci*(bw+gap);
+      ph.forEach(p=>{const v=g[p].m[ci];const h=H*v/max2;y-=h;const rr=el("rect",{x,y,width:bw,height:Math.max(0,h-1),fill:css(PH[p])},sg);hover(rr,`<b>${p}</b> · ${r}<br>${v} ± ${g[p].sd[ci]}%`);});
+      el("rect",{x,y:Y0+8,width:bw,height:6,rx:3,fill:css(REG[ci])},sg);
+      tx(sg,x+bw/2,Y0+34,r,"t-lbl",{"text-anchor":"middle"});});
+    const lg=el("g",{transform:"translate(140 430)"},sg);let lx=0;ph.forEach(p=>{el("rect",{x:lx,y:-11,width:12,height:12,fill:css(PH[p])},lg);tx(lg,lx+17,0,p,"t-sub");lx+=p.length*9+40;});
+    tx(sg,X2+3*(bw+gap)+bw/2,Y0-H*27.3/max2-12,"Bacteroidetes 14.4%","t-val",{"text-anchor":"middle","font-weight":600});
+  }
+  function set(k){
+    P.axis.style.opacity=k<2?1:0; P.stack.style.opacity=k>=2?1:0;
+    P.bars.forEach(b=>{const show=b.a==="young"||k>=1;b.rect.style.width=(show?b.W:0)+"px";b.rect.setAttribute("width",show?b.W:0);b.val.setAttribute("x",b.X+(show?b.W:0)+10);b.val.style.opacity=show?1:0;});
+    cap.textContent=["PERMANOVA R², unweighted UniFrac (Table 2-6).","Same test, eight days later.","Stacked means for five phyla; remaining share unassigned or other phyla (Table 2-9)."][k];
+  }
+  return {build,set};
+})();
+
+/* =============== Graphic: STOOL =============== */
+G.stool=(function(){
+  const s=document.getElementById("g-stool"),cap=document.getElementById("c-stool");let P={};
+  function build(){s.innerHTML="";P={bars:[]};
+    const X=90,W=800,Y=60,H=330,gw=W/4;
+    tx(s,X,36,"How well stool predicts each site (R² of shared microbes)","t-sub");
+    for(let v=0;v<=1.0001;v+=.25){const y=Y+H-H*v;el("line",{x1:X,x2:X+W,y1:y,y2:y,stroke:css("--line")},s);tx(s,X-10,y+4,v.toFixed(2),"t-sub",{"text-anchor":"end"});}
+    P.q=st(tx(s,X+W/2,Y+H/2,"?","t-huge tw",{"text-anchor":"middle","font-size":140,fill:css("--off")}),{opacity:1});
+    const groups=[["small","lumen","Small intestine","contents"],["small","mucosa","Small intestine","lining"],["large","lumen","Colon","contents"],["large","mucosa","Colon","lining"]];
+    groups.forEach(([reg,rad,a,b],gi)=>{const gx=X+gi*gw;tx(s,gx+gw/2,Y+H+26,a,"t-lbl",{"text-anchor":"middle"});tx(s,gx+gw/2,Y+H+44,b,"t-sub",{"text-anchor":"middle"});
+      ["young","old"].forEach((age,ai)=>{const v=D.stool[age][reg][rad];const bw=62,x=gx+gw/2-bw-4+ai*(bw+8);
+        const r=st(el("rect",{x,width:bw,rx:3,fill:age==="old"?css("--eosin"):css("--hema"),class:"tw"},s),{height:"0px",y:(Y+H)+"px"});
+        const less=age==="old"&&reg==="small"&&rad==="mucosa";
+        const t=st(tx(s,x+bw/2,Y+H-8,(less?"<":"")+(v<.01?"0.001":v.toFixed(2)),"t-val tw",{"text-anchor":"middle","font-weight":600}),{opacity:0});
+        P.bars.push({age,v,r,t,Y,H,hl:reg==="small"&&rad==="lumen"});});});
+    const lg=el("g",{transform:`translate(${X} ${Y+H+80})`},s);
+    el("rect",{x:0,y:-11,width:12,height:12,fill:css("--hema")},lg);tx(lg,18,0,"Day 1 to 2","t-sub");
+    el("rect",{x:130,y:-11,width:12,height:12,fill:css("--eosin")},lg);tx(lg,148,0,"Day 9 to 10","t-sub");
+    P.arrow=st(el("g",{class:"tw"},s),{opacity:0});
+    const ax=X+gw/2;el("path",{d:`M ${ax-34} ${Y+H-H*.67-14} C ${ax-20} ${Y+60}, ${ax+40} ${Y+80}, ${ax+38} ${Y+H-H*.07-24}`,fill:"none",stroke:css("--ink"),"stroke-width":1.5,"stroke-dasharray":"4 4"},P.arrow);
+    tx(P.arrow,ax+60,Y+40,"0.67 → 0.07","t-huge",{"font-size":30});
+  }
+  function set(k){
+    P.q.style.opacity=k===0?1:0;
+    P.bars.forEach(b=>{const show=(b.age==="young"&&k>=1)||(b.age==="old"&&k>=2);const h=show?Math.max(3,b.H*b.v):0;
+      b.r.style.height=h+"px";b.r.style.y=(b.Y+b.H-h)+"px";b.r.setAttribute("height",h);b.r.setAttribute("y",b.Y+b.H-h);b.t.setAttribute("y",b.Y+b.H-h-8);b.t.style.opacity=show?1:0;
+      b.r.style.opacity=(k===3&&!b.hl)?.35:1;});
+    P.arrow.style.opacity=k===3?1:0;
+    cap.textContent=["","Day 1 to 2: stool tracks the gut fairly well.","Day 9 to 10: the small intestine decouples. All panels P < 0.05 (Figure 2-14).","Small-intestine contents: from 0.67 to 0.07 in about a week."][k];
+  }
+  return {build,set};
+})();
+
+/* =============== Graphic: FOOD =============== */
+G.food=(function(){
+  const s=document.getElementById("g-food"),cap=document.getElementById("c-food");let P={};
+  function build(){s.innerHTML="";P={cells:[],macros:[],label:null};
+    const fat=css("--eosin"),pro=css("--hema"),carb=css("--p-cyan");
+    const FA=["8:0","10:0","12:0","14:0","16:0","16:1","18:0","18:1","18:2","18:3","20:4","22:6"],AA="A R N D C Q E G H I L K M F P S T W Y V".split(" "),CB=["Glc","Fru","Gal","Suc","Lac","Mal","Starch","Fiber"];
+    const all=[...FA.map((l,i)=>[l,0,mix(fat,(i%4)*.09-.05),1]),...AA.map((l,i)=>[l,1,mix(pro,(i%5)*.08-.06),0]),...CB.map((l,i)=>[l,2,mix(carb,(i%4)*.07-.18),1])];
+    const X=40,W=860,u=W/40,Y=150,H=190;
+    // label block (nutrition facts)
+    P.label=el("g",{class:"tw"},s);
+    el("rect",{x:X,y:Y,width:W,height:H,rx:4,fill:css("--ink")},P.label);
+    tx(P.label,X+24,Y+46,"Nutrition Facts","t-huge",{"font-size":30,fill:css("--panel")});
+    ["Calories","Total fat","Protein","Total carbohydrate"].forEach((t,i)=>tx(P.label,X+24+i*210,Y+120,t,"",{"font-size":17,fill:css("--panel")}));
+    tx(P.label,X+24,Y+160,"a few numbers per food","t-sub",{fill:css("--off")});
+    // macros
+    [["Fat",12,fat],["Protein",20,pro],["Carbohydrate",8,carb]].reduce((x,[l,n,c])=>{const w=n*u;
+      const g=st(el("g",{class:"tw"},s),{opacity:0});el("rect",{x:x+2,y:Y,width:w-4,height:H,rx:4,fill:c},g);
+      tx(g,x+w/2,Y+H/2+8,l,"t-huge",{"text-anchor":"middle","font-size":26,fill:css("--panel")});P.macros.push(g);return x+w;},X);
+    // molecules
+    all.forEach(([l,grp,c,rot],i)=>{const x=X+i*u;const g=st(el("g",{class:"tw"},s),{opacity:0,transitionDelay:(i*18)+"ms"});
+      el("rect",{x:x+1.5,y:Y,width:u-3,height:H,rx:3,fill:c},g);
+      if(rot)tx(g,x+u/2+4,Y+H/2,l,"",{"text-anchor":"middle",transform:`rotate(-90 ${x+u/2+4} ${Y+H/2})`,"font-size":12,"font-family":"IBM Plex Mono, monospace",fill:css("--panel")});
+      else tx(g,x+u/2,Y+H/2+5,l,"",{"text-anchor":"middle","font-size":13,"font-family":"IBM Plex Mono, monospace",fill:css("--panel")});
+      P.cells.push(g);});
+    P.molLab=st(el("g",{class:"tw"},s),{opacity:0});
+    [[6,"fatty acids"],[22,"amino acids"],[36,"carbohydrate types"]].forEach(([c,l])=>tx(P.molLab,X+c*u,Y+H+26,l,"t-sub",{"text-anchor":"middle"}));
+    tx(P.molLab,X,Y-20,"1 food  →  3 numbers  →  40 molecules","t-val",{"font-weight":600});
+    // label change chart
+    P.chg=st(el("g",{class:"tw"},s),{opacity:0});
+    const c=D.foodomics.changeMag,X2=110,Y2=70,H2=300,gw=190,max=50;
+    tx(P.chg,X2,Y2-30,"Share of label changes larger than each threshold (%)","t-sub");
+    for(let v=0;v<=max;v+=10){const y=Y2+H2-H2*v/max;el("line",{x1:X2,x2:X2+4*gw,y1:y,y2:y,stroke:css("--line")},P.chg);tx(P.chg,X2-10,y+4,v,"t-sub",{"text-anchor":"end"});}
+    const ser=[["protein","Protein",pro],["fat","Fat",fat],["carb","Carbohydrate",carb]];
+    c.labels.forEach((l,i)=>{const gx=X2+i*gw;tx(P.chg,gx+gw/2,Y2+H2+24,"> "+l.slice(1),"t-lbl",{"text-anchor":"middle"});
+      ser.forEach(([k,kl,col],si)=>{const v=c[k][i],h=H2*v/max,bw=40,x=gx+gw/2-64+si*(bw+4);el("rect",{x,y:Y2+H2-h,width:bw,height:h,fill:col},P.chg);});});
+    const lg=el("g",{transform:`translate(${X2} ${Y2+H2+60})`},P.chg);let lx=0;ser.forEach(([k,kl,col])=>{el("rect",{x:lx,y:-11,width:12,height:12,fill:col},lg);tx(lg,lx+17,0,kl,"t-sub");lx+=kl.length*9.5+44;});
+    tx(P.chg,X2+4*gw,Y2-30,"449 of 964 foods changed","t-val",{"text-anchor":"end","font-weight":600});
+    // burrito
+    P.bur=st(el("g",{class:"tw"},s),{opacity:0});
+    tx(P.bur,120,80,"Same meal, same gram weights, two sets of equivalent brands","t-sub");
+    [["Brand set A",1],["Brand set B",2]].forEach(([l,m],i)=>{const y=150+i*130;tx(P.bur,120,y-14,l,"t-lbl");
+      el("rect",{x:120,y,width:250*m,height:70,rx:4,fill:i?css("--eosin"):css("--hema")},P.bur);tx(P.bur,120+250*m+16,y+46,(m===1?"1×":"2×")+" carbohydrate","t-huge",{"font-size":28});});
+    tx(P.bur,120,440,"Relative carbohydrate delivered. Figure 3-13.","t-sub");
+  }
+  function set(k){
+    P.label.style.opacity=k===0?1:0;
+    P.macros.forEach(g=>g.style.opacity=k===1?1:0);
+    P.cells.forEach(g=>g.style.opacity=k===2?1:0);P.molLab.style.opacity=k===2?1:0;
+    P.chg.style.opacity=k===3?1:0;P.bur.style.opacity=k===4?1:0;
+    cap.textContent=["What a diet record usually captures.","The macronutrient view.","Foodomics: each cell is one estimated component. Widths show counts, not amounts. Schematic.","Table 3-2.","Modeled ketogenic meal, ratio 1.5:1."][k];
+  }
+  return {build,set};
+})();
+
+/* =============== Graphic: CLINIC =============== */
+G.clinic=(function(){
+  const s=document.getElementById("g-clinic"),cap=document.getElementById("c-clinic");let P={};
+  function build(){s.innerHTML="";P={kids:[],days:null,fat:null};const c=D.clinical;
+    P.kg=el("g",{class:"tw"},s);
+    const groups=[["Orally fed",c.oral,css("--hema")],["Tube fed",c.tube,css("--eosin")],["Both",c.both,css("--p-bact")]];
+    let gx=70;groups.forEach(([l,n,col])=>{const cols=Math.ceil(n/6);tx(P.kg,gx,90,`${l} · ${n}`,"t-lbl");
+      for(let i=0;i<n;i++){const x=gx+(i%cols)*38+14,y=130+Math.floor(i/cols)*38;
+        const k=st(el("circle",{cx:x,cy:y,r:13,fill:col,class:"tw"},P.kg),{opacity:0,transitionDelay:(P.kids.length*14)+"ms"});P.kids.push(k);}
+      gx+=cols*38+60;});
+    tx(P.kg,70,400,"53 children with seizures that at least two medications had not controlled","t-sub");
+    // days
+    P.days=st(el("g",{class:"tw"},s),{opacity:0});
+    tx(P.days,70,70,"8,999 days of molecular-level intake","t-lbl");
+    const cols=60,cw=13,ch=13;for(let i=0;i<cols*14;i++){const x=70+(i%cols)*cw,y=90+Math.floor(i/cols)*(ch+4);
+      el("rect",{x,y,width:cw-2,height:ch,fill:css("--hema"),"fill-opacity":(0.3+0.7*((i*37)%11)/10).toFixed(2)},P.days);}
+    tx(P.days,70,350,"each square is about 11 days of brand-specific records","t-sub");
+    // fat composition schematic
+    P.fat=st(el("g",{class:"tw"},s),{opacity:0});
+    tx(P.fat,70,60,"Schematic: same prescribed ratio, different fats","t-sub");
+    const X=185,Y=100,H=260,n=10;
+    tx(P.fat,70,Y+14,"Ratio","t-lbl");tx(P.fat,70,Y+80,"Fat eaten","t-lbl");tx(P.fat,70,Y+98,"S / M / P","t-sub");
+    const mixes=[[.62,.30,.08],[.45,.40,.15],[.55,.33,.12],[.38,.44,.18],[.66,.27,.07],[.48,.36,.16],[.41,.47,.12],[.58,.30,.12],[.36,.40,.24],[.52,.38,.10]];
+    for(let i=0;i<n;i++){const x=X+i*70;tx(P.fat,x+28,Y+14,"4:1","t-val",{"text-anchor":"middle","font-weight":600});
+      let y=Y+40;[[0,css("--hema")],[1,css("--eosin")],[2,css("--p-cyan")]].forEach(([j,col])=>{const h=H*.8*mixes[i][j];el("rect",{x,y,width:56,height:h-2,fill:col},P.fat);y+=h;});}
+    const lg=el("g",{transform:`translate(${X} ${Y+H+30})`},P.fat);let lx=0;[["Saturated",css("--hema")],["Monounsaturated",css("--eosin")],["Polyunsaturated",css("--p-cyan")]].forEach(([l,col])=>{el("rect",{x:lx,y:-11,width:12,height:12,fill:col},lg);tx(lg,lx+17,0,l,"t-sub");lx+=l.length*9.2+44;});
+  }
+  function set(k){P.kg.style.opacity=k===0?1:0;P.kids.forEach(x=>x.style.opacity=k===0?1:0);
+    P.days.style.opacity=k===1?1:0;P.fat.style.opacity=k===2?1:0;
+    cap.textContent=["Patients by feeding route (Ch. 4 methods).","8,999 records (days) meeting inclusion criteria.","Illustration of the finding, not patient data. See Figures 4-2 to 4-7."][k];}
+  return {build,set};
+})();
+
+/* =============== Scroll engine =============== */
+const state={};
+document.querySelectorAll(".scrolly").forEach(sc=>{
+  const key=sc.dataset.graphic, steps=[...sc.querySelectorAll(".step")];
+  state[key]=0;
+  const io=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting){const i=steps.indexOf(e.target);
+    steps.forEach((s,j)=>s.classList.toggle("on",j===i));if(state[key]!==i){state[key]=i;G[key].set(i);countUp(e.target);}}});},{rootMargin:"-45% 0px -45% 0px"});
+  steps.forEach(s=>io.observe(s));steps[0].classList.add("on");
+});
+function countUp(step){const n=step.querySelector("[data-count]");if(!n||n.dataset.done||reduce)return;n.dataset.done=1;const end=+n.dataset.count,t0=performance.now();
+  (function f(t){const p=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-p,3);n.textContent=Math.round(end*e).toLocaleString("en-US");if(p<1)requestAnimationFrame(f)})(t0);}
+const prog=document.getElementById("prog");addEventListener("scroll",()=>{const h=document.documentElement;prog.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+"%"},{passive:true});
+
+/* =============== Appendix =============== */
+let hAge="old",hRad="lumen",metric="unweighted";
 function seg(ids,cb){ids.forEach(id=>document.getElementById(id).addEventListener("click",()=>{ids.forEach(j=>document.getElementById(j).setAttribute("aria-pressed",j===id));cb(id)}))}
-
-// ---------- Fig 1: map ----------
-function drawMap(){
-  const s=document.getElementById("map");s.innerHTML="";
-  const d="M 92 92 C 40 120, 60 210, 140 196 C 196 186, 196 120, 238 128 C 290 138, 262 236, 316 238 C 372 240, 352 118, 410 122 C 468 126, 444 240, 502 240 C 556 240, 540 140, 592 150 C 630 158, 626 236, 662 250 C 700 266, 790 262, 790 200 C 790 140, 700 130, 694 186 C 690 236, 790 262, 820 300 C 846 334, 852 352, 856 374";
-  el("path",{d,fill:"none",stroke:css("--tract-edge"),"stroke-width":26,"stroke-linecap":"round","stroke-linejoin":"round"},s);
-  const tr=el("path",{d,fill:"none",stroke:css("--tract"),"stroke-width":22,"stroke-linecap":"round","stroke-linejoin":"round"},s);
-  const L=tr.getTotalLength();
-  const pos=i=>i<9?.12+.46*((i+.5)/9):.66+.32*((i-9+.5)/4);
-  [["Stomach",70,62],["Small intestine",330,96],["Large intestine",748,112],["Rectum",880,372]].forEach(r=>tx(s,r[1],r[2],r[0],"t-lbl",{"text-anchor":"middle"}));
-  tx(s,330,112,"thirds, 3 sites each","t-sub",{"text-anchor":"middle"});tx(s,748,128,"4 sites","t-sub",{"text-anchor":"middle"});
-  for(let i=0;i<13;i++){const p=tr.getPointAtLength(pos(i)*L);const r=i<3?0:i<6?1:i<9?2:3;
-    const g=el("g",{},s);el("circle",{cx:p.x,cy:p.y,r:11,fill:css(REG[r]),stroke:css("--panel"),"stroke-width":2.5},g);
-    tx(g,p.x,p.y+4,String(i+1),"t-cell",{"text-anchor":"middle",fill:css("--panel"),"font-weight":600});
-    hover(g,`<b>Site ${i+1}</b> · ${D.regions[r]}<br>${D.samples.lumen[i]} lumen + ${D.samples.mucosa[i]} mucosa samples`);}
-  const inset=el("g",{transform:"translate(70 270)"},s);
-  el("circle",{cx:60,cy:60,r:56,fill:"none",stroke:css("--tract-edge"),"stroke-width":12},inset);
-  el("circle",{cx:60,cy:60,r:40,fill:css("--tract"),opacity:.6},inset);
-  el("circle",{cx:60,cy:60,r:7,fill:css("--hema")},inset);el("circle",{cx:60,cy:4,r:7,fill:css("--eosin")},inset);
-  tx(inset,74,64,"lumen","t-sub");tx(inset,74,8,"mucosa","t-sub");
-  tx(inset,60,140,"Paired at each site","t-lbl",{"text-anchor":"middle"});tx(inset,60,156,"13 × 2 = 26 sites per piglet","t-sub",{"text-anchor":"middle"});
-  const k=el("g",{transform:"translate(330 420)"},s);
-  tx(k,0,0,"12 piglets × 26 sites per piglet: 288 samples sequenced and analyzed","t-sub");
-}
-
-// ---------- Fig 2: overall phyla ----------
-function drawOverall(){
-  const s=document.getElementById("overall");s.innerHTML="";
-  const o=D.phylaOverall, X=150, W=760;
-  [["young","Day 1 to 2"],["old","Day 9 to 10"]].forEach(([k,lab],ri)=>{
-    const y=18+ri*62; tx(s,0,y+24,lab,"t-lbl");
-    let x=X;o.order.forEach(ph=>{const v=o[k][ph]||0;const w=W*v/100;if(w<=0)return;
-      const r=el("rect",{x,y,width:Math.max(1,w-1.5),height:38,fill:css(PH[ph])},s);
-      hover(r,`<b>${ph}</b><br>${v}% of all sequences, ${lab.toLowerCase()}`);
-      if(w>58)tx(s,x+6,y+24,`${ph} ${v}%`,"t-cell",{fill:css("--panel")});x+=w;});
-  });
-  const lg=el("g",{transform:"translate(150 156)"},s);let lx=0;
-  o.order.forEach(ph=>{el("rect",{x:lx,y:-9,width:10,height:10,fill:css(PH[ph])},lg);tx(lg,lx+14,0,ph,"t-sub");lx+=ph.length*7+30;});
-}
-
-// ---------- Fig 3: heatmap ----------
-let hAge="old",hRad="lumen";
-function drawHeat(){
-  const s=document.getElementById("heat");s.innerHTML="";
-  const g=D.regional[hAge][hRad];
-  const rows=["Firmicutes","Proteobacteria","Bacteroidetes","TM7","Fusobacteria","Cyanobacteria","Actinobacteria","Synergistetes","Tenericutes"];
-  const X=170,CW=165,RH=36,Y=46;
-  D.regions.forEach((r,ci)=>{const cx=X+ci*CW+CW/2;el("rect",{x:X+ci*CW+3,y:8,width:CW-6,height:6,rx:3,fill:css(REG[ci])},s);
-    tx(s,cx,34,`${r} · sites ${D.regionSites[ci][0]} to ${D.regionSites[ci].slice(-1)[0]}`,"t-lbl",{"text-anchor":"middle","font-size":12});});
-  tx(s,X+4*CW+40,34,"q-value","t-sub",{"text-anchor":"middle"});
-  const hema=css("--hema");
-  rows.forEach((ph,ri)=>{const y=Y+ri*RH;el("rect",{x:0,y:y+12,width:10,height:10,rx:2,fill:css(PH[ph])},s);tx(s,16,y+22,ph,"",{"font-size":13});
-    const d=g[ph];
-    D.regions.forEach((r,ci)=>{const x=X+ci*CW;
-      if(!d){el("rect",{x:x+3,y:y+3,width:CW-6,height:RH-6,rx:3,fill:css("--soft")},s);tx(s,x+CW/2,y+22,"–","t-val",{"text-anchor":"middle",fill:css("--muted")});return;}
-      const v=d.m[ci], a=Math.min(1,Math.sqrt(v/32));
-      const c=el("rect",{x:x+3,y:y+3,width:CW-6,height:RH-6,rx:3,fill:hema,"fill-opacity":(0.06+0.94*a).toFixed(3)},s);
+function drawHeat(){const s=document.getElementById("heat");s.innerHTML="";const g=D.regional[hAge][hRad];
+  const rows=["Firmicutes","Proteobacteria","Bacteroidetes","TM7","Fusobacteria","Cyanobacteria","Actinobacteria","Synergistetes","Tenericutes"];const X=170,CW=165,RH=36,Y=46;
+  D.regions.forEach((r,ci)=>{el("rect",{x:X+ci*CW+3,y:8,width:CW-6,height:6,rx:3,fill:css(REG[ci])},s);tx(s,X+ci*CW+CW/2,34,`${r} · sites ${D.regionSites[ci][0]} to ${D.regionSites[ci].slice(-1)[0]}`,"t-lbl",{"text-anchor":"middle","font-size":12});});
+  tx(s,X+4*CW+40,34,"q-value","t-sub",{"text-anchor":"middle"});const hema=css("--hema");
+  rows.forEach((ph,ri)=>{const y=Y+ri*RH;el("rect",{x:0,y:y+12,width:10,height:10,rx:2,fill:css(PH[ph])},s);tx(s,16,y+22,ph,"",{"font-size":13});const d=g[ph];
+    D.regions.forEach((r,ci)=>{const x=X+ci*CW;if(!d){el("rect",{x:x+3,y:y+3,width:CW-6,height:RH-6,rx:3,fill:css("--soft")},s);tx(s,x+CW/2,y+22,"–","t-val",{"text-anchor":"middle",fill:css("--muted")});return;}
+      const v=d.m[ci],a=Math.min(1,Math.sqrt(v/32));const c=el("rect",{x:x+3,y:y+3,width:CW-6,height:RH-6,rx:3,fill:hema,"fill-opacity":(0.06+0.94*a).toFixed(3)},s);
       el("rect",{x:x+3,y:y+3,width:CW-6,height:RH-6,rx:3,fill:"none",stroke:css("--line")},s);
-      tx(s,x+CW/2,y+22,v.toFixed(2)+"%","t-val",{"text-anchor":"middle",fill:a>.55?css("--panel"):css("--ink")});
-      hover(c,`<b>${ph}</b> · ${r} ${hRad}<br>${v} ± ${d.sd[ci]}% (mean ± SD)<br>${hAge==="old"?"Day 9 to 10":"Day 1 to 2"}`);});
-    tx(s,X+4*CW+40,y+22,d?d.q:"","t-val",{"text-anchor":"middle",fill:d&&d.q.startsWith("<")?css("--eosin"):css("--muted")});
-  });
-  const notes={ "old-lumen":"Bacteroidetes is concentrated in the colon (14.4%) while Firmicutes and Proteobacteria are enriched in the small intestine.",
-    "old-mucosa":"Proteobacteria, Actinobacteria and Cyanobacteria are enriched on the small-intestine mucosa; Bacteroidetes again marks the colon.",
-    "young-lumen":"At day 1 to 2 Bacteroidetes is nearly absent everywhere, and Proteobacteria is spread along the whole tract.",
-    "young-mucosa":"Cyanobacteria is notably high on the duodenal mucosa of the youngest piglets (7.1%)."};
-  document.getElementById("heatNote").textContent=notes[hAge+"-"+hRad];
-}
+      tx(s,x+CW/2,y+22,v.toFixed(2)+"%","t-val",{"text-anchor":"middle","font-size":11.5,fill:a>.55?css("--panel"):css("--ink")});
+      hover(c,`<b>${ph}</b> · ${r} ${hRad}<br>${v} ± ${d.sd[ci]}% (mean ± SD)`);});
+    tx(s,X+4*CW+40,y+22,d?d.q:"","t-val",{"text-anchor":"middle","font-size":11.5,fill:d&&d.q.startsWith("<")?css("--eosin"):css("--muted")});});}
+function drawLoc(){const s=document.getElementById("loc");s.innerHTML="";const m=D.location[metric];const X=170,W=700,max=40,RH=44,Y=16;
+  for(let v=0;v<=max;v+=10){const x=X+W*v/max;el("line",{x1:x,x2:x,y1:Y-6,y2:Y+4*RH,stroke:css("--line")},s);tx(s,x,Y+4*RH+16,v+"%","t-sub",{"text-anchor":"middle"});}
+  [["young","Day 1 to 2"],["old","Day 9 to 10"]].forEach(([a,al],ai)=>["lumen","mucosa"].forEach((r,ri)=>{const [v,p]=m[a][r];const y=Y+(ai*2+ri)*RH;
+    tx(s,X-10,y+RH/2+4,`${al}, ${r}`,"",{"font-size":12.5,"text-anchor":"end"});const w=W*v/max;el("rect",{x:X,y:y+6,width:w,height:RH-12,rx:2,fill:a==="old"?css("--hema"):css("--off")},s);
+    tx(s,X+w+6,y+RH/2+4,`${v}%  p = ${p}`,"t-val",{"font-size":11.5});}));}
 seg(["a-young","a-old"],id=>{hAge=id==="a-old"?"old":"young";drawHeat()});
 seg(["r-lumen","r-mucosa"],id=>{hRad=id==="r-lumen"?"lumen":"mucosa";drawHeat()});
-
-// ---------- generic horizontal bars ----------
-function hbars(svg,items,opts){svg.innerHTML="";const X=opts.x||170,W=(opts.w||700),max=opts.max||50,RH=opts.rh||30,Y=opts.y||16;
-  for(let v=0;v<=max;v+=opts.step||10){const x=X+W*v/max;el("line",{x1:x,x2:x,y1:Y-6,y2:Y+items.length*RH,stroke:css("--line")},svg);tx(svg,x,Y+items.length*RH+16,v+((opts.unit??"%")),"t-sub",{"text-anchor":"middle"});}
-  items.forEach((it,i)=>{const y=Y+i*RH;tx(svg,X-10,y+RH/2+4,it.label,"",{"font-size":12.5,"text-anchor":"end"});
-    const w=Math.max(1.5,W*it.v/max);const r=el("rect",{x:X,y:y+5,width:w,height:RH-10,rx:2,fill:it.color,"fill-opacity":it.dim?.35:1},svg);
-    tx(svg,X+w+6,y+RH/2+4,it.text,"t-val",{fill:it.dim?css("--muted"):css("--ink")});if(it.tip)hover(r,it.tip);});}
-
-let metric="unweighted";
-function drawLoc(){const m=D.location[metric];const it=[];
-  [["young","Day 1 to 2"],["old","Day 9 to 10"]].forEach(([a,al])=>["lumen","mucosa"].forEach(r=>{const [v,p]=m[a][r];
-    it.push({label:`${al}, ${r}`,v,color:a==="old"?css("--hema"):css("--off"),text:`${v}%  p = ${p}`,tip:`${m.label}<br>${al}, ${r}: R² ${v}%, p = ${p}`});}));
-  hbars(document.getElementById("loc"),it,{max:40,rh:44,step:10});}
 seg(["m-unweighted","m-weighted","m-bray"],id=>{metric=id.slice(2);drawLoc()});
 
-function drawRad(){const it=[];[["young","Day 1 to 2"],["old","Day 9 to 10"]].forEach(([a,al])=>[["small","small int."],["large","large int."]].forEach(([k,kl])=>{const [v,p]=D.radius[a][k];
-  it.push({label:`${al}, ${kl}`,v,color:css("--eosin"),dim:+p>0.05,text:`${v}%  p = ${p}`});}));
-  hbars(document.getElementById("rad"),it,{x:150,w:230,max:20,step:5,rh:44});}
-function drawAge(){const it=[];[["small","Small int."],["large","Large int."]].forEach(([k,kl])=>["lumen","mucosa"].forEach(r=>{const [v,p]=D.age[k][r];
-  it.push({label:`${kl}, ${r}`,v,color:css("--hema"),text:`${v}%`});}));
-  hbars(document.getElementById("agefx"),it,{x:140,w:240,max:50,step:10,rh:44});}
-
-// ---------- Fig 7: stool ----------
-let sMode="old";
-function drawStool(){const s=document.getElementById("stoolfx");s.innerHTML="";
-  const groups=[["small","lumen","Small intestine, lumen"],["small","mucosa","Small intestine, mucosa"],["large","lumen","Large intestine, lumen"],["large","mucosa","Large intestine, mucosa"]];
-  const X=60,W=860,Y=20,H=200,gw=W/4;
-  for(let v=0;v<=1.0001;v+=.25){const y=Y+H-H*v;el("line",{x1:X,x2:X+W,y1:y,y2:y,stroke:css("--line")},s);tx(s,X-8,y+4,v.toFixed(2),"t-sub",{"text-anchor":"end"});}
-  const ages=sMode==="both"?["young","old"]:[sMode];
-  groups.forEach(([reg,rad,lab],gi)=>{const gx=X+gi*gw;tx(s,gx+gw/2,Y+H+22,lab,"",{"font-size":12.5,"text-anchor":"middle"});
-    const bw=sMode==="both"?54:80;
-    ages.forEach((a,ai)=>{const d=D.stool[a][reg];const v=d[rad];const less=a==="old"&&reg==="small"&&rad==="mucosa";
-      const x=gx+gw/2-(ages.length*bw+(ages.length-1)*8)/2+ai*(bw+8);const h=Math.max(2,H*v);
-      const r=el("rect",{x,y:Y+H-h,width:bw,height:h,rx:2,fill:a==="old"?css("--eosin"):css("--hema")},s);
-      tx(s,x+bw/2,Y+H-h-7,(less?"< ":"")+v.toFixed(v<.01?3:2),"t-val",{"text-anchor":"middle"});
-      hover(r,`${a==="old"?"Day 9 to 10":"Day 1 to 2"} · ${lab}<br>R² ${less?"< ":""}${v}`);});});
-  const lg=el("g",{transform:`translate(${X} ${Y+H+44})`},s);
-  el("rect",{x:0,y:-9,width:10,height:10,fill:css("--hema")},lg);tx(lg,14,0,"Day 1 to 2","t-sub");
-  el("rect",{x:110,y:-9,width:10,height:10,fill:css("--eosin")},lg);tx(lg,124,0,"Day 9 to 10","t-sub");}
-seg(["s-young","s-old","s-both"],id=>{sMode=id.slice(2);drawStool()});
-
-// ---------- Fig 8: ladder ----------
-function mix(hex,amt){const h=hex.replace("#","");if(h.length<6)return hex;const n=parseInt(h,16);let r=n>>16,g=(n>>8)&255,b=n&255;const t=amt>0?255:0,a=Math.abs(amt);return `rgb(${Math.round(r+(t-r)*a)},${Math.round(g+(t-g)*a)},${Math.round(b+(t-b)*a)})`}
-function drawLadder(){const s=document.getElementById("ladder");s.innerHTML="";
-  const fat=css("--eosin"),pro=css("--hema"),carb=css("--p-cyan"),food=css("--ink");
-  const FA=["8:0","10:0","12:0","14:0","16:0","16:1","18:0","18:1","18:2","18:3","20:4","22:6"],AA="A R N D C Q E G H I L K M F P S T W Y V".split(" "),CB=["Glc","Fru","Gal","Suc","Lac","Mal","Starch","Fiber"];
-  const rows=[[["One food, as labeled",40,food,1]],[["Fat",12,fat,1],["Protein",20,pro,1],["Carbohydrate",8,carb,1]],
-    [...FA.map((l,i)=>[l,1,mix(fat,(i%4)*.09-.05),0,1]),...AA.map((l,i)=>[l,1,mix(pro,(i%5)*.08-.06),0,0]),...CB.map((l,i)=>[l,1,mix(carb,(i%4)*.07-.18),0,1])]];
-  const X=150,W=770,RH=50,GAP=30,u=W/40,labs=["Label","Macronutrients","Molecules"];
-  rows.forEach((row,ri)=>{const y=20+ri*(RH+GAP);tx(s,0,y+RH/2+4,labs[ri],"t-sub");let x=X;
-    row.forEach(([l,n,c,big,rot])=>{const w=n*u;el("rect",{x:x+1,y,width:w-2,height:RH,rx:2,fill:c},s);
-      if(ri<2)el("rect",{x:x+1,y:y+RH,width:w-2,height:GAP,fill:c,opacity:.12},s);
-      if(rot)tx(s,x+w/2+3.5,y+RH/2,l,"t-cell",{fill:css("--panel"),"text-anchor":"middle",transform:`rotate(-90 ${x+w/2+3.5} ${y+RH/2})`,"dominant-baseline":"middle"});
-      else tx(s,x+w/2,y+RH/2+4.5,l,big?"":"t-cell",{fill:css("--panel"),"text-anchor":"middle","font-weight":big?600:400,"font-size":big?13:10.5});
-      x+=w;});});
-  const yb=20+2*(RH+GAP)+RH+18;[[6,"fatty acids"],[22,"amino acids"],[36,"sugars, starch, fiber"]].forEach(([c,l])=>tx(s,X+c*u,yb,l,"t-sub",{"text-anchor":"middle"}));}
-
-// ---------- Fig 9, 10 ----------
-function drawCats(){const it=D.foodomics.topCategories.map(([l,v])=>({label:l,v,color:css("--eosin"),text:fmt(v),tip:`${l}: ${fmt(v)} products`}));
-  hbars(document.getElementById("cats"),it,{x:120,w:250,max:1500,step:500,unit:"",rh:34});}
-function drawChanges(){const s=document.getElementById("changes");s.innerHTML="";const c=D.foodomics.changeMag;
-  const X=40,W=390,Y=16,H=150,gw=W/4,max=50;
-  for(let v=0;v<=max;v+=10){const y=Y+H-H*v/max;el("line",{x1:X,x2:X+W,y1:y,y2:y,stroke:css("--line")},s);tx(s,X-6,y+4,v+"%","t-sub",{"text-anchor":"end"});}
-  const ser=[["protein","Protein",css("--hema")],["fat","Fat",css("--eosin")],["carb","Carbohydrate",css("--p-cyan")]];
-  c.labels.forEach((l,i)=>{const gx=X+i*gw;tx(s,gx+gw/2,Y+H+16,l,"t-sub",{"text-anchor":"middle"});
-    ser.forEach(([k,kl,col],si)=>{const v=c[k][i],h=H*v/max,bw=22,x=gx+gw/2-36+si*(bw+3);
-      const r=el("rect",{x,y:Y+H-h,width:bw,height:h,fill:col},s);hover(r,`${kl} changed by ${l}: ${v}% of changes`);});});
-  const lg=el("g",{transform:`translate(${X} ${Y+H+38})`},s);let lx=0;ser.forEach(([k,kl,col])=>{el("rect",{x:lx,y:-9,width:10,height:10,fill:col},lg);tx(lg,lx+14,0,kl,"t-sub");lx+=kl.length*7+34;});}
-
-// ---------- Fig 11 ----------
-function drawCohort(){const s=document.getElementById("cohort");s.innerHTML="";const c=D.clinical,tot=c.oral+c.tube+c.both,X=150,W=760;
-  tx(s,0,44,"53 patients","t-lbl");let x=X;
-  [["Orally fed",c.oral,css("--hema")],["Tube fed",c.tube,css("--eosin")],["Both",c.both,css("--p-bact")]].forEach(([l,n,col])=>{const w=W*n/tot;
-    el("rect",{x,y:20,width:w-2,height:40,fill:col},s);tx(s,x+8,45,`${l} · ${n}`,"t-cell",{fill:css("--panel"),"font-size":12});x+=w;});
-  tx(s,0,112,"8,999 days","t-lbl");
-  const days=el("g",{},s);const n=180;for(let i=0;i<n;i++){el("rect",{x:X+i*(W/n),y:92,width:W/n-1,height:26,fill:css("--hema"),"fill-opacity":(0.25+0.75*((i*37)%11)/10).toFixed(2)},days);}
-  tx(s,X,138,"each tick is about 50 days of brand-specific, molecular-level intake","t-sub");}
-
-function render(){drawMap();drawOverall();drawHeat();drawLoc();drawRad();drawAge();drawStool();drawLadder();drawCats();drawChanges();drawCohort();}
-render();
-try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render)}catch(e){}
+function renderAll(){Object.keys(G).forEach(k=>{G[k].build();G[k].set(state[k]||0)});drawHeat();drawLoc();}
+renderAll();
+try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",renderAll)}catch(e){}
 })();
 </script>
 </body>
